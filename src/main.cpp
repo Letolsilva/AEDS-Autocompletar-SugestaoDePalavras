@@ -19,7 +19,7 @@ int main() {
         processor.init(filename); // Inicializa o processamento para cada arquivo
         processor.topKWords(k); // Calcula o top K para o arquivo
         
-        //processor.printTopK(k); // Imprime o top K para o arquivo
+        //processor.printTopK(k); 
 
         std::string listFilename = "data/lista.txt"; // Nome do arquivo de lista
         processor.processListAndDisplay(listFilename); // Processa a lista e exibe informações

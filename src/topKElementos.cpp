@@ -126,7 +126,7 @@ void topKItems::topKWords(int k)
         {
             topKHeapSize++;
 
-            if (topKHeapSize <= k + 1) // Modifique para K+1
+            if (topKHeapSize <= k + 1) 
             {
                 vectortopKHeap.push_back(entry);
                 heapify(vectortopKHeap, topKHeapSize, 0);
@@ -204,12 +204,13 @@ void topKItems::processListAndDisplay(const std::string &listFilename)
         if (wordCount.find(word) != wordCount.end()) // Verifica se a palavra está no texto
         {
             bool isTopK = false;
-            for (auto &topKEntry : vectortopKHeap)
+            for (auto topKEntry = vectortopKHeap.begin(); topKEntry != vectortopKHeap.end(); ++topKEntry)
             {
-                if (topKEntry.first == word)
+                
+                if (topKEntry->first == word)
                 {
                     isTopK = true;
-                    vectortopKHeap.erase(vectortopKHeap.begin()); // Remove a palavra do heap
+                    vectortopKHeap.erase(topKEntry); // Se eu dou um erase nela ela some do vetor logo nao aparece nas outras e o vetor diminui de tamanho!!!
                     heapify(vectortopKHeap, vectortopKHeap.size(), 0);
                     break;
                 }
@@ -226,27 +227,29 @@ void topKItems::processListAndDisplay(const std::string &listFilename)
             }
         }
 
-        // TreeNode *root = buildBinaryTreeFromVector(vectortopKHeap, 0, vectortopKHeap.size() - 1);
         TreeNode *root = nullptr;
         for (const auto &entry : vectortopKHeap)
         {
             insertTree(&root, entry);
         }
+          std::cout<<"\n\n";
+        widthPath(root);
+        std::cout<<"\n\n";
         std::cout << "Palavra: " << word << "\n";
         std::cout << "Frequência: " << wordCount[word] << "\n";
         std::cout << "Árvore Binária em ordem inordem:\n";
         printBinaryTreeInOrder(root);
-        std::cout << std::endl;
+        // std::cout << std::endl;
 
         // Mostra as informações conforme solicitado
         //     std::cout << "Palavra: " << word << "\n";
         //     std::cout << "Frequência: " << wordCount[word] << "\n";
-            std::cout << "Top K Palavras:\n";
-            for (const auto &entry : vectortopKHeap)
-            {
-                std::cout << entry.first << ": " << entry.second << "\n";
-            }
-            std::cout << "-------------------\n";
+        // std::cout << "Top K Palavras:\n";
+        // for (const auto &entry : vectortopKHeap)
+        // {
+        //     std::cout << entry.first << ": " << entry.second << "\n";
+        // }
+        // std::cout << "-------------------\n";
     }
 
     listFile.close();
@@ -298,3 +301,34 @@ void topKItems::printBinaryTreeInOrder(TreeNode *root)
     std::cout << root->data.first << ": " << root->data.second << "\n";
     printBinaryTreeInOrder(root->right);
 }
+
+void topKItems::widthPath(TreeNode *t)
+{
+    std::queue<TreeNode*> q;
+    q.push(t);
+
+    while (!q.empty())
+    {
+        int size = q.size();
+
+        for (int i = 0; i < size; i++)
+        {
+            TreeNode *curr = q.front();
+            q.pop();
+            if (curr)
+            {
+                std::cout << curr->data.first << ": " << curr->data.second << " ";
+                if (curr->left)
+                {
+                    q.push(curr->left);
+                }
+                if (curr->right)
+                {
+                    q.push(curr->right);
+                }
+            }
+        }
+        std::cout << "\n";
+    }
+}
+

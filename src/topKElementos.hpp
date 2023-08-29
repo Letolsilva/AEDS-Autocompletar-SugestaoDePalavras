@@ -41,6 +41,7 @@ private:
     void printBinaryTreeInOrder(TreeNode *root);
     // bool comparePairs(const std::pair<std::string, int> &a, const std::pair<std::string, int> &b);
     void insertTree(TreeNode** t, const std::pair<std::string, int>& r);
+    void widthPath(TreeNode *t);
 
 };
 
