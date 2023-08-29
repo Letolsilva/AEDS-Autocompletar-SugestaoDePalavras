@@ -201,16 +201,17 @@ void topKItems::processListAndDisplay(const std::string &listFilename)
     std::string word;
     while (listFile >> word)
     {
+        std::vector<std::pair<std::string, int>> vectortopKHeapAux = vectortopKHeap ;
         if (wordCount.find(word) != wordCount.end()) // Verifica se a palavra está no texto
         {
             bool isTopK = false;
-            for (auto topKEntry = vectortopKHeap.begin(); topKEntry != vectortopKHeap.end(); ++topKEntry)
+            for (auto topKEntryAux = vectortopKHeapAux.begin(); topKEntryAux != vectortopKHeapAux.end(); ++topKEntryAux)
             {
                 
-                if (topKEntry->first == word)
+                if (topKEntryAux->first == word)
                 {
                     isTopK = true;
-                    vectortopKHeap.erase(topKEntry); // Se eu dou um erase nela ela some do vetor logo nao aparece nas outras e o vetor diminui de tamanho!!!
+                    vectortopKHeapAux.erase(topKEntryAux); 
                     heapify(vectortopKHeap, vectortopKHeap.size(), 0);
                     break;
                 }
@@ -218,17 +219,17 @@ void topKItems::processListAndDisplay(const std::string &listFilename)
 
             if (!isTopK)
             {
-                std::pair<std::string, int> minFreqPair = vectortopKHeap[0]; // Remove a palavra de menor frequência
-                vectortopKHeap[0] = vectortopKHeap.back();
-                vectortopKHeap.pop_back();
-                heapify(vectortopKHeap, vectortopKHeap.size(), 0);
+                std::pair<std::string, int> minFreqPair = vectortopKHeapAux[0];
+                vectortopKHeapAux[0] = vectortopKHeapAux.back();
+                vectortopKHeapAux.pop_back();
+                heapify(vectortopKHeapAux, vectortopKHeapAux.size(), 0);
 
                 wordCount.erase(minFreqPair.first);
             }
         }
 
         TreeNode *root = nullptr;
-        for (const auto &entry : vectortopKHeap)
+        for (const auto &entry : vectortopKHeapAux)
         {
             insertTree(&root, entry);
         }
@@ -254,26 +255,6 @@ void topKItems::processListAndDisplay(const std::string &listFilename)
 
     listFile.close();
 }
-// bool topKItems::comparePairs(const std::pair<std::string, int> &a, const std::pair<std::string, int> &b)
-// {
-//     return a.second < b.second; // Compara as frequências
-// }
-
-// TreeNode *topKItems::buildBinaryTreeFromVector(const std::vector<std::pair<std::string, int>> &arr, int start, int end)
-// {
-//     if (start > end)
-//     {
-//         return nullptr;
-//     }
-
-//     int mid = (start + end) / 2;
-//     TreeNode *root = new TreeNode(arr[mid]);
-
-//     root->left = buildBinaryTreeFromVector(arr, start, mid - 1);
-//     root->right = buildBinaryTreeFromVector(arr, mid + 1, end);
-
-//     return root;
-// }
 
 void topKItems::insertTree(TreeNode **t, const std::pair<std::string, int> &r)
 {

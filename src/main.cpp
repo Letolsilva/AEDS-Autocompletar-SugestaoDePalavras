@@ -21,7 +21,8 @@ int main() {
         
         //processor.printTopK(k); 
 
-        std::string listFilename = "data/lista.txt"; // Nome do arquivo de lista
+        std::string listFilename = "data/lista.txt"; 
+        std::cout<<"Arquivo "<<i<<std::endl;
         processor.processListAndDisplay(listFilename); // Processa a lista e exibe informações
         processor.wordCount.clear(); 
     }
