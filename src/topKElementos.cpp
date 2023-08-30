@@ -24,11 +24,6 @@ void topKItems::init(const std::string &filename)
     }
     wordCountPerFile[filename] = wordCount; // Armazena o wordCount atual no mapa separado por arquivo
     inputFile.close();
-    // std::cout << "Frequencia das palavras:\n";
-    // for (const auto &entry : wordCount)
-    // {
-    //     std::cout << entry.first << ": " << entry.second << std::endl;
-    // }
 }
 
 void topKItems::StopWords(const std::string &stopWordsFilename)
@@ -126,7 +121,7 @@ void topKItems::topKWords(int k)
         {
             topKHeapSize++;
 
-            if (topKHeapSize <= k + 1) 
+            if (topKHeapSize <= k + 1)
             {
                 vectortopKHeap.push_back(entry);
                 heapify(vectortopKHeap, topKHeapSize, 0);
@@ -189,7 +184,7 @@ void topKItems::heapify(std::vector<std::pair<std::string, int>> &vectorAux, int
     }
 }
 
-void topKItems::processListAndDisplay(const std::string &listFilename)
+void topKItems::processListAndDisplay(const std::string &listFilename, std::ofstream &outputFile)
 {
     std::ifstream listFile(listFilename);
     if (!listFile)
@@ -201,18 +196,17 @@ void topKItems::processListAndDisplay(const std::string &listFilename)
     std::string word;
     while (listFile >> word)
     {
-        std::vector<std::pair<std::string, int>> vectortopKHeapAux = vectortopKHeap ;
+        std::vector<std::pair<std::string, int>> vectortopKHeapAux = vectortopKHeap;
         if (wordCount.find(word) != wordCount.end()) // Verifica se a palavra está no texto
         {
             bool isTopK = false;
             for (auto topKEntryAux = vectortopKHeapAux.begin(); topKEntryAux != vectortopKHeapAux.end(); ++topKEntryAux)
             {
-                
                 if (topKEntryAux->first == word)
                 {
                     isTopK = true;
-                    vectortopKHeapAux.erase(topKEntryAux); 
-                    heapify(vectortopKHeap, vectortopKHeap.size(), 0);
+                    vectortopKHeapAux.erase(topKEntryAux);
+                    heapify(vectortopKHeapAux, vectortopKHeapAux.size(), 0);
                     break;
                 }
             }
@@ -227,24 +221,21 @@ void topKItems::processListAndDisplay(const std::string &listFilename)
                 wordCount.erase(minFreqPair.first);
             }
         }
-
-        TreeNode *root = nullptr;
-        for (const auto &entry : vectortopKHeapAux)
+        else
         {
-            insertTree(&root, entry);
-        }
-          std::cout<<"\n\n";
-        widthPath(root);
-        std::cout<<"\n\n";
-        std::cout << "Palavra: " << word << "\n";
-        std::cout << "Frequência: " << wordCount[word] << "\n";
-        std::cout << "Árvore Binária em ordem inordem:\n";
-        printBinaryTreeInOrder(root);
-        // std::cout << std::endl;
+            std::pair<std::string, int> minFreqPair = vectortopKHeapAux[0];
+            vectortopKHeapAux[0] = vectortopKHeapAux.back();
+            vectortopKHeapAux.pop_back();
+            heapify(vectortopKHeapAux, vectortopKHeapAux.size(), 0);
 
-        // Mostra as informações conforme solicitado
-        //     std::cout << "Palavra: " << word << "\n";
-        //     std::cout << "Frequência: " << wordCount[word] << "\n";
+            wordCount.erase(minFreqPair.first);
+        }
+        basicTree arvore;
+        CreatTree(vectortopKHeapAux, outputFile, word, arvore);
+
+        AVLTree avlTree;
+        CreatAVL(vectortopKHeapAux, word, avlTree);
+
         // std::cout << "Top K Palavras:\n";
         // for (const auto &entry : vectortopKHeap)
         // {
@@ -256,60 +247,32 @@ void topKItems::processListAndDisplay(const std::string &listFilename)
     listFile.close();
 }
 
-void topKItems::insertTree(TreeNode **t, const std::pair<std::string, int> &r)
+void topKItems::CreatTree(std::vector<std::pair<std::string, int>> &vectorBasicTree, std::ofstream &outputFile, std::string word, basicTree arvore)
 {
-    if (*t == nullptr)
+    TreeNode *root = nullptr;
+    for (const auto &entry : vectorBasicTree)
     {
-        *t = new TreeNode(r);
+        arvore.insertTree(&root, entry);
     }
-    else if (r.second <= (*t)->data.second)
-    {
-        insertTree(&(*t)->left, r);
-    }
-    else if (r.second >= (*t)->data.second)
-    {
-        insertTree(&(*t)->right, r);
-    }
+    outputFile << "Palavra: " << word << "\n";
+    outputFile << "Frequência: " << wordCount[word] << "\n";
+    outputFile << "Árvore Binária em ordem inordem:\n";
+    arvore.printBinaryTreeInOrder(root, outputFile);
+    outputFile << "\n";
 }
 
-void topKItems::printBinaryTreeInOrder(TreeNode *root)
+void topKItems::CreatAVL(std::vector<std::pair<std::string, int>> &vectorAVLTree, std::string word, AVLTree arvoreAVL)
 {
-    if (root == nullptr)
+    TreeAVL *root = nullptr;
+    for (const auto &entry : vectorAVLTree)
     {
-        return;
+        arvoreAVL.insertTree(&root, entry);
     }
-    printBinaryTreeInOrder(root->left);
-    std::cout << root->data.first << ": " << root->data.second << "\n";
-    printBinaryTreeInOrder(root->right);
+
+    std::cout << "Palavra: " << word << "\n";
+    std::cout << "Frequência: " << wordCount[word] << "\n";
+    std::cout << "Árvore AVL em ordem inordem:\n";
+    arvoreAVL.printInOrder(root);
+    // arvoreAVL.printAVLLevels(root);
+    std::cout << "\n";
 }
-
-void topKItems::widthPath(TreeNode *t)
-{
-    std::queue<TreeNode*> q;
-    q.push(t);
-
-    while (!q.empty())
-    {
-        int size = q.size();
-
-        for (int i = 0; i < size; i++)
-        {
-            TreeNode *curr = q.front();
-            q.pop();
-            if (curr)
-            {
-                std::cout << curr->data.first << ": " << curr->data.second << " ";
-                if (curr->left)
-                {
-                    q.push(curr->left);
-                }
-                if (curr->right)
-                {
-                    q.push(curr->right);
-                }
-            }
-        }
-        std::cout << "\n";
-    }
-}
-
