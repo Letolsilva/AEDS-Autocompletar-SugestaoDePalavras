@@ -27,6 +27,18 @@ void basicTree::printBinaryTreeInOrder(TreeNode *root, std::ofstream &outputFile
     printBinaryTreeInOrder(root->right, outputFile);
 }
 
+void basicTree::printBinaryTreeInOrderTESTE(TreeNode *root, std::ofstream &outputFile)
+{
+    if (root == nullptr)
+    {
+        return;
+    }
+    printBinaryTreeInOrderTESTE(root->left, outputFile);
+    std::cout << root->data.first << ": " << root->data.second << "\n";
+    printBinaryTreeInOrderTESTE(root->right, outputFile);
+}
+
+
 void basicTree::widthPath(TreeNode *t)
 {
     std::queue<TreeNode *> q;
@@ -55,5 +67,19 @@ void basicTree::widthPath(TreeNode *t)
         }
         std::cout << "\n";
     }
+}
+
+TreeNode* basicTree::copyNode(TreeNode* node)
+{
+    if (node == nullptr)
+    {
+        return nullptr;
+    }
+
+    TreeNode* copiedNode = new TreeNode(node->data);
+    copiedNode->left = copyNode(node->left);
+    copiedNode->right = copyNode(node->right);
+
+    return copiedNode;
 }
 

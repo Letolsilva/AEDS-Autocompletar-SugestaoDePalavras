@@ -6,6 +6,7 @@
 #include <vector>
 #include "BinaryTree.hpp"
 #include "AVL_Tree.hpp"
+#include "HuffmanTree.hpp"
 
 class topKItems
 {

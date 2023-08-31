@@ -22,14 +22,14 @@ struct TreeNode
 class basicTree
 {
 public:
-    void insertTree(TreeNode** t, const std::pair<std::string, int>& r);
+    void insertTree(TreeNode **t, const std::pair<std::string, int> &r);
     void printBinaryTreeInOrder(TreeNode *root, std::ofstream &outputFile);
+    void printBinaryTreeInOrderTESTE(TreeNode *root, std::ofstream &outputFile);
+    void widthPath(TreeNode *t);
+    TreeNode *copyNode(TreeNode *node);
 
 private:
-   
     TreeNode *binaryTreeRoot = nullptr;
-    void widthPath(TreeNode *t);
-
 };
 
 #endif

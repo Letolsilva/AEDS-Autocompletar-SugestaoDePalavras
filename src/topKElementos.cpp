@@ -257,9 +257,23 @@ void topKItems::CreatTree(std::vector<std::pair<std::string, int>> &vectorBasicT
     outputFile << "Palavra: " << word << "\n";
     outputFile << "Frequência: " << wordCount[word] << "\n";
     outputFile << "Árvore Binária em ordem inordem:\n";
-    arvore.printBinaryTreeInOrder(root, outputFile);
+    //arvore.printBinaryTreeInOrder(root, outputFile);
+    // std::cout<<"ARVORE BINARIA \n";
+    arvore.widthPath(root);
+    std::cout<<std::endl;
     outputFile << "\n";
+
+
+    // Huffman huff;
+    // TreeNode *clone = arvore.copyNode(root);  
+    // std::cout << "Árvore Huffman em ordem inordem:\n";
+    //huff.printInOrder(clone);
+    //huff.printHuffmanLevels(clone);
+    //std::cout<<std::endl;
+    // std::cout << "Árvore clonada (em ordem):\n";
+    // arvore.printBinaryTreeInOrderTESTE(clone, outputFile);
 }
+
 
 void topKItems::CreatAVL(std::vector<std::pair<std::string, int>> &vectorAVLTree, std::string word, AVLTree arvoreAVL)
 {
@@ -272,7 +286,10 @@ void topKItems::CreatAVL(std::vector<std::pair<std::string, int>> &vectorAVLTree
     std::cout << "Palavra: " << word << "\n";
     std::cout << "Frequência: " << wordCount[word] << "\n";
     std::cout << "Árvore AVL em ordem inordem:\n";
-    arvoreAVL.printInOrder(root);
-    // arvoreAVL.printAVLLevels(root);
+    // arvoreAVL.printInOrder(root);
+    arvoreAVL.printAVLLevels(root);
     std::cout << "\n";
 }
+
+
+

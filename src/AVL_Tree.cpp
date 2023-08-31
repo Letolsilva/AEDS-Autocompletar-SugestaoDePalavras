@@ -4,7 +4,7 @@ AVLTree::AVLTree() : root(nullptr) {}
 
 AVLTree::~AVLTree()
 {
-    // Implement destructor to deallocate memory
+   
 }
 
 int AVLTree::getWeight(TreeAVL *t)
@@ -75,7 +75,7 @@ void AVLTree::insertTree(TreeAVL **t, const std::pair<std::string, int> &AVL)
             insertTree(&(*t)->right, AVL);
             if ((getWeight((*t)->right) - getWeight((*t)->left)) == 2)
             {
-                if (AVL.second > (*t)->right->data.second)
+                if (AVL.second >= (*t)->right->data.second)
                     rotacaoSimplesEsquerda(t);
                 else
                     rotacaoDuplaEsquerda(t);
