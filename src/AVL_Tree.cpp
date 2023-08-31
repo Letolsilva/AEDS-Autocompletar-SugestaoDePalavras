@@ -4,17 +4,22 @@ AVLTree::AVLTree() : root(nullptr) {}
 
 AVLTree::~AVLTree()
 {
-   
 }
 
-int AVLTree::getWeight(TreeAVL *t)
+int AVLTree::getWeight(TreeAVL **t)
 {
-    return (t == nullptr) ? -1 : t->weight;
+    if (*t == nullptr)
+    {
+        return -1;
+    }
+    return (*t)->weight;
 }
 
 int AVLTree::getMaxWeight(int a, int b)
 {
-    return (a > b) ? a : b;
+    if (a > b)
+        return a;
+    return b;
 }
 
 void AVLTree::rotacaoSimplesDireita(TreeAVL **t)
@@ -23,8 +28,8 @@ void AVLTree::rotacaoSimplesDireita(TreeAVL **t)
     aux = (*t)->left;
     (*t)->left = aux->right;
     aux->right = (*t);
-    (*t)->weight = getMaxWeight(getWeight((*t)->left), getWeight((*t)->right)) + 1;
-    aux->weight = getMaxWeight(getWeight(aux->left), (*t)->weight) + 1;
+    (*t)->weight = getMaxWeight(getWeight(&(*t)->left), getWeight(&(*t)->right)) + 1;
+    aux->weight = getMaxWeight(getWeight(&aux->left), (*t)->weight) + 1;
     (*t) = aux;
 }
 
@@ -34,8 +39,8 @@ void AVLTree::rotacaoSimplesEsquerda(TreeAVL **t)
     aux = (*t)->right;
     (*t)->right = aux->left;
     aux->left = (*t);
-    (*t)->weight = getMaxWeight(getWeight((*t)->left), getWeight((*t)->right)) + 1;
-    aux->weight = getMaxWeight(getWeight(aux->left), (*t)->weight) + 1;
+    (*t)->weight = getMaxWeight(getWeight(&(*t)->left), getWeight(&(*t)->right)) + 1;
+    aux->weight = getMaxWeight(getWeight(&aux->left), (*t)->weight) + 1;
     (*t) = aux;
 }
 
@@ -55,49 +60,79 @@ void AVLTree::insertTree(TreeAVL **t, const std::pair<std::string, int> &AVL)
 {
     if (*t == nullptr)
     {
+        std::cout << AVL.first << " "<< "NULL" << std::endl;
         *t = new TreeAVL(AVL);
+        (*t)->left = NULL;
+        (*t)->right = NULL;
+        (*t)->weight = 0;
     }
     else
     {
-        if (AVL.second <= (*t)->data.second)
+        if (AVL.second < (*t)->data.second)
         {
+            std::cout << AVL.first << " "
+                      << "ESQUERDA" << std::endl;
             insertTree(&(*t)->left, AVL);
-            if ((getWeight((*t)->left) - getWeight((*t)->right)) == 2)
+            if ((getWeight(&(*t)->left) - getWeight(&(*t)->right)) == 2)
             {
-                if (AVL.second <= (*t)->left->data.second){
+                std::cout << AVL.first << " "
+                          << "FOI IGUAL A 2 ESQUERDA" << std::endl;
+                if (AVL.second < (*t)->left->data.second)
+                {
+                    std::cout << AVL.first << " "
+                              << "ROTAÇAO DIREITA" << std::endl;
                     rotacaoSimplesDireita(t);
-                }else{
+                }
+                else
+                {
+                    std::cout << AVL.first << " "
+                              << "ROTAÇAO DUPLA DIREITA" << std::endl;
                     rotacaoDuplaDireita(t);
                 }
-                    
             }
         }
-        else if (AVL.second > (*t)->data.second)
+        if (AVL.second >= (*t)->data.second)
         {
+            std::cout << AVL.first << " "
+                      << "DIREITAA" << std::endl;
             insertTree(&(*t)->right, AVL);
-            if ((getWeight((*t)->right) - getWeight((*t)->left)) == 2)
+            if ((getWeight(&(*t)->right) - getWeight(&(*t)->left)) == 2)
             {
-                if (AVL.second > (*t)->right->data.second){
+                std::cout << AVL.first << " "
+                          << "FOI IGUAL A 2 DIREITA" << std::endl;
+                if (AVL.second >= (*t)->right->data.second)
+                {
+                    std::cout << AVL.first << " "
+                              << "ROTAÇAO ESQUERDA" << std::endl;
                     rotacaoSimplesEsquerda(t);
-                }else{
+                }
+                else
+                {
+                    std::cout << AVL.first << " "
+                              << "ROTAÇAO DUPLA ESQUERDA" << std::endl;
                     rotacaoDuplaEsquerda(t);
                 }
             }
         }
-
-        (*t)->weight = getMaxWeight(getWeight((*t)->left), getWeight((*t)->right)) + 1;
+        // std::cout << (*t)->weight << " "
+        //           << "ACABOU" << std::endl;
+        // std::cout << getWeight(&(*t)->right) << " "
+        //           << "DIREITA WEIGHT" << std::endl;
+        // std::cout << getWeight(&(*t)->left) << " "
+        //           << "ESQUERDA WEIGHT" << std::endl;
+        (*t)->weight = getMaxWeight(getWeight(&(*t)->left), getWeight(&(*t)->right)) + 1;
     }
 }
 
-void AVLTree::printInOrder(TreeAVL *t)
+void AVLTree::printInOrder(TreeAVL *t, std::ofstream &outputFile)
 {
     if (t == nullptr)
     {
         return;
     }
-    printInOrder(t->left);
-    std::cout << t->data.first << ": " << t->data.second << "\n";
-    printInOrder(t->right);
+    printInOrder(t->left, outputFile);
+    outputFile<< t->data.first << " " ;
+    printInOrder(t->right, outputFile);
 }
 void AVLTree::printAVLLevels(TreeAVL *t)
 {

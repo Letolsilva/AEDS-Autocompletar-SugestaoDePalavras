@@ -23,7 +23,7 @@ void basicTree::printBinaryTreeInOrder(TreeNode *root, std::ofstream &outputFile
         return;
     }
     printBinaryTreeInOrder(root->left, outputFile);
-    outputFile << root->data.first << ": " << root->data.second << "\n";
+    outputFile << root->data.first << " ";
     printBinaryTreeInOrder(root->right, outputFile);
 }
 

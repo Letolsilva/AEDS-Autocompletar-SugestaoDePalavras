@@ -184,7 +184,7 @@ void topKItems::heapify(std::vector<std::pair<std::string, int>> &vectorAux, int
     }
 }
 
-void topKItems::processListAndDisplay(const std::string &listFilename, std::ofstream &outputFile, int k)
+void topKItems::processListAndDisplay(const std::string &listFilename, std::ofstream &outputFile, int k, int numFiles)
 {
     std::ifstream listFile(listFilename);
     if (!listFile)
@@ -196,9 +196,8 @@ void topKItems::processListAndDisplay(const std::string &listFilename, std::ofst
     std::string word;
     while (listFile >> word)
     {
-        // OBS:: Tratar de se a apalavra tiver a frequencia 0 nao precisa de uma arvore!!!!
         std::vector<std::pair<std::string, int>> vectortopKHeapAux = vectortopKHeap;
-        if (wordCount.find(word) != wordCount.end()) // Verifica se a palavra está no texto
+        if (wordCount.find(word) != wordCount.end() && wordCount[word] > 0)
         {
             bool isTopK = false;
             for (auto topKEntryAux = vectortopKHeapAux.begin(); topKEntryAux != vectortopKHeapAux.end(); ++topKEntryAux)
@@ -207,7 +206,10 @@ void topKItems::processListAndDisplay(const std::string &listFilename, std::ofst
                 {
                     isTopK = true;
                     vectortopKHeapAux.erase(topKEntryAux);
-                    heapify(vectortopKHeapAux, vectortopKHeapAux.size(), 0);
+                    for (int i = k / 2 - 1; i >= 0; --i)
+                    {
+                        heapify(vectortopKHeap, k, i);
+                    }
                     break;
                 }
             }
@@ -217,81 +219,106 @@ void topKItems::processListAndDisplay(const std::string &listFilename, std::ofst
                 std::pair<std::string, int> minFreqPair = vectortopKHeapAux[0];
                 vectortopKHeapAux[0] = vectortopKHeapAux.back();
                 vectortopKHeapAux.pop_back();
-                heapify(vectortopKHeapAux, vectortopKHeapAux.size(), 0);
+                heapify(vectortopKHeapAux, k, 0);
 
                 wordCount.erase(minFreqPair.first);
             }
         }
         else
         {
-            std::pair<std::string, int> minFreqPair = vectortopKHeapAux[0];
-            vectortopKHeapAux[0] = vectortopKHeapAux.back();
-            vectortopKHeapAux.pop_back();
-            heapify(vectortopKHeapAux, vectortopKHeapAux.size(), 0);
-
-            wordCount.erase(minFreqPair.first);
+            outputFile<<"-------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<std::endl;
+            outputFile<< word << " não encontrada no texto "<< numFiles << std::endl;
+            continue;
         }
+        writeFormattedToFile(outputFile, numFiles, word);
         basicTree arvore;
-        CreatTree(vectortopKHeapAux, outputFile, word, arvore);
+        CreatTree(vectortopKHeapAux, outputFile, arvore);
 
         AVLTree avlTree;
-        CreatAVL(vectortopKHeapAux, word, avlTree);
+        CreatAVL(vectortopKHeapAux, avlTree, outputFile);
 
         HuffmanTree huffmanTree;
+        CreatHuffman(vectortopKHeapAux, k, huffmanTree, outputFile);
 
-        int size = vectortopKHeapAux.size();
-        std::string data[size];
-        int freq[size];
-
-        for (int i = 0; i < size; ++i)
-        {
-            data[i] = vectortopKHeapAux[i].first;
-            freq[i] = vectortopKHeapAux[i].second;
-        }
-
-        huffmanTree.HuffmanCodes(data, freq, size, k);
-
-        // std::cout << "Top K Palavras:\n";
+        // std::cout << "Top K Palavras depois:\n";
         // for (const auto &entry : vectortopKHeapAux)
         // {
         //     std::cout << entry.first << ": " << entry.second << "\n";
         // }
         // std::cout << "-------------------\n";
+        // std::cout << "\n";
     }
 
     listFile.close();
 }
 
-void topKItems::CreatTree(std::vector<std::pair<std::string, int>> &vectorBasicTree, std::ofstream &outputFile, std::string word, basicTree arvore)
+void topKItems::CreatTree(std::vector<std::pair<std::string, int>> &vectorBasicTree, std::ofstream &outputFile, basicTree arvore)
 {
     TreeNode *root = nullptr;
     for (const auto &entry : vectorBasicTree)
     {
         arvore.insertTree(&root, entry);
     }
-    outputFile << "Palavra: " << word << "\n";
-    outputFile << "Frequência: " << wordCount[word] << "\n";
-    outputFile << "Árvore Binária em ordem inordem:\n";
-    // arvore.printBinaryTreeInOrder(root, outputFile);
-    std::cout<<"ARVORE BINARIA \n";
-    arvore.widthPath(root);
-    std::cout << std::endl;
+    // outputFile << "Árvore Binária em ordem inordem:\n";
+    outputFile << std::left << std::setw(48) << std::setfill(' ') << "ARVORE BINÁRIA(InOrdem): " << std::endl;
+    outputFile << "[";
+    arvore.printBinaryTreeInOrder(root, outputFile);
+    outputFile << "]";
+    outputFile << std::endl;
+    // arvore.widthPath(root);
+    // std::cout << std::endl;
     outputFile << "\n";
-
 }
 
-void topKItems::CreatAVL(std::vector<std::pair<std::string, int>> &vectorAVLTree, std::string word, AVLTree arvoreAVL)
+void topKItems::CreatAVL(std::vector<std::pair<std::string, int>> &vectorAVLTree, AVLTree arvoreAVL, std::ofstream &outputFile)
 {
     TreeAVL *root = nullptr;
     for (const auto &entry : vectorAVLTree)
     {
         arvoreAVL.insertTree(&root, entry);
     }
+    outputFile << std::left << std::setw(48) << std::setfill(' ') << "ARVORE AVL(InOrdem): " << std::endl;
+    outputFile << "[";
+    arvoreAVL.printInOrder(root, outputFile);
+    outputFile << "]";
+    outputFile << std::endl;
+    outputFile << "\n";
 
-    std::cout << "Palavra: " << word << "\n";
-    std::cout << "Frequência: " << wordCount[word] << "\n";
-    std::cout << "Árvore AVL em ordem inordem:\n";
-    // arvoreAVL.printInOrder(root);
-    arvoreAVL.printAVLLevels(root);
-    std::cout << "\n";
+    // std::cout << "Árvore AVL em ordem inordem:\n";
+    //  arvoreAVL.printInOrder(root);
+    // arvoreAVL.printAVLLevels(root);
+    // std::cout << "\n";
+}
+void topKItems::CreatHuffman(std::vector<std::pair<std::string, int>> &vectorHuffmanTree, int k, HuffmanTree arvoreHuffman, std::ofstream &outputFile)
+{
+    int size = vectorHuffmanTree.size();
+    std::string word[size];
+    int freq[size];
+
+    for (int i = 0; i < size; ++i)
+    {
+        word[i] = vectorHuffmanTree[i].first;
+        freq[i] = vectorHuffmanTree[i].second;
+    }
+    outputFile << std::left << std::setw(48) << std::setfill(' ') << "ARVORE HUFFMAN(InOrdem): " << std::endl;
+    outputFile << "[";
+    arvoreHuffman.HuffmanCodes(word,freq,size,k, outputFile);
+    outputFile << "]";
+    outputFile << std::endl;
+    outputFile << "\n";
+    // std::cout << "Árvore Huffman em ordem inordem:\n";
+    // arvoreHuffman.HuffmanCodes(word, freq, size, k);
+}
+
+void topKItems::writeFormattedToFile(std::ofstream &outputFile, int numFiles, const std::string &word)
+{
+    outputFile<< "---------------------------------------------------------------------------------------------------------------------------------------"<<std::endl;
+    outputFile << std::left << std::setw(12) << "TEXTOS"
+               << std::left << std::setw(20) << "PALAVRAS DA LISTA"
+               << std::left << std::setw(20) << "FREQUENCIA" << std::endl;
+
+    outputFile << std::left << std::setw(12) << "Arquivo" << numFiles << " "
+               << std::left << std::setw(20) << word
+               << std::left << std::setw(20) << wordCount[word] << std::endl;
+    outputFile << std::endl;
 }

@@ -1,6 +1,8 @@
 #ifndef AVL_TREE_HPP
 #define AVL_TREE_HPP
-
+#include <fstream>
+#include <string>
+#include <vector>
 #include <iostream>
 #include <string>
 #include <queue>
@@ -19,7 +21,7 @@ class AVLTree
 private:
     TreeAVL *root;
 
-    int getWeight(TreeAVL *t);
+    int getWeight(TreeAVL **t);
     int getMaxWeight(int a, int b);
     void rotacaoSimplesDireita(TreeAVL **t);
     void rotacaoSimplesEsquerda(TreeAVL **t);
@@ -29,7 +31,7 @@ private:
 public:
     AVLTree();
     ~AVLTree();
-    void printInOrder(TreeAVL *t);
+    void printInOrder(TreeAVL *t, std::ofstream &outputFile);
     void printAVLLevels(TreeAVL *t);
     void insertTree(TreeAVL **t, const std::pair<std::string, int> &data);
 };

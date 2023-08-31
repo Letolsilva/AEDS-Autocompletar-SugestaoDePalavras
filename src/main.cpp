@@ -30,8 +30,9 @@ int main()
         // processor.printTopK(k);
 
         std::string listFilename = "data/lista.txt";
-        outputFile << "Arquivo " << i << std::endl;
-        processor.processListAndDisplay(listFilename, outputFile, k); 
+        std::cout << "Arquivo " << i << std::endl;
+        processor.processListAndDisplay(listFilename, outputFile, k, i); 
+
         processor.wordCount.clear();
     }
 

@@ -60,7 +60,7 @@ Huffman* HuffmanTree::generateHuffmanTree(std::priority_queue<Huffman*, std::vec
 }
 
 
-void HuffmanTree::HuffmanCodes(std::string data[], int freq[], int size, int K)
+void HuffmanTree::HuffmanCodes(std::string data[], int freq[], int size, int K, std::ofstream &outputFile)
 {
     std::priority_queue<Huffman*, std::vector<Huffman*>, Compare> pq;
     for (int i = 0; i < size; i++) {
@@ -70,31 +70,30 @@ void HuffmanTree::HuffmanCodes(std::string data[], int freq[], int size, int K)
  
     Huffman* root = generateHuffmanTree(pq);
     int arr[K];
-    printCodes(root,arr, 0);
-    
-    // std::cout<<"HUFFMAN";
+    printCodes(root,arr, 0, outputFile);
     // printHuffmanLevels(root);
 }
 
-void HuffmanTree::printCodes(Huffman* root,int arr[], int top)
+void HuffmanTree::printCodes(Huffman* root,int arr[], int top, std::ofstream &outputFile)
 {
     if (root->left) {
         arr[top] = 0;
         printCodes(root->left,
-                   arr, top + 1);
+                   arr, top + 1, outputFile);
     }
  
     if (root->right) {
         arr[top] = 1;
-        printCodes(root->right, arr, top + 1);
+        printCodes(root->right, arr, top + 1, outputFile);
     }
  
     if (!root->left && !root->right) {
-        std::cout << root->word << " ";
+        outputFile << root->word;
+         outputFile<<"(";
         for (int i = 0; i < top; i++) {
-            std::cout << arr[i];
+            outputFile<< arr[i];
         }
-        std::cout << std::endl;
+        outputFile<<")"<<" ";
     }
 }
 
