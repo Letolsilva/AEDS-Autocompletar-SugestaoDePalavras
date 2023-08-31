@@ -184,7 +184,7 @@ void topKItems::heapify(std::vector<std::pair<std::string, int>> &vectorAux, int
     }
 }
 
-void topKItems::processListAndDisplay(const std::string &listFilename, std::ofstream &outputFile)
+void topKItems::processListAndDisplay(const std::string &listFilename, std::ofstream &outputFile, int k)
 {
     std::ifstream listFile(listFilename);
     if (!listFile)
@@ -196,6 +196,7 @@ void topKItems::processListAndDisplay(const std::string &listFilename, std::ofst
     std::string word;
     while (listFile >> word)
     {
+        // OBS:: Tratar de se a apalavra tiver a frequencia 0 nao precisa de uma arvore!!!!
         std::vector<std::pair<std::string, int>> vectortopKHeapAux = vectortopKHeap;
         if (wordCount.find(word) != wordCount.end()) // Verifica se a palavra está no texto
         {
@@ -236,8 +237,22 @@ void topKItems::processListAndDisplay(const std::string &listFilename, std::ofst
         AVLTree avlTree;
         CreatAVL(vectortopKHeapAux, word, avlTree);
 
+        HuffmanTree huffmanTree;
+
+        int size = vectortopKHeapAux.size();
+        std::string data[size];
+        int freq[size];
+
+        for (int i = 0; i < size; ++i)
+        {
+            data[i] = vectortopKHeapAux[i].first;
+            freq[i] = vectortopKHeapAux[i].second;
+        }
+
+        huffmanTree.HuffmanCodes(data, freq, size, k);
+
         // std::cout << "Top K Palavras:\n";
-        // for (const auto &entry : vectortopKHeap)
+        // for (const auto &entry : vectortopKHeapAux)
         // {
         //     std::cout << entry.first << ": " << entry.second << "\n";
         // }
@@ -257,23 +272,13 @@ void topKItems::CreatTree(std::vector<std::pair<std::string, int>> &vectorBasicT
     outputFile << "Palavra: " << word << "\n";
     outputFile << "Frequência: " << wordCount[word] << "\n";
     outputFile << "Árvore Binária em ordem inordem:\n";
-    //arvore.printBinaryTreeInOrder(root, outputFile);
-    // std::cout<<"ARVORE BINARIA \n";
+    // arvore.printBinaryTreeInOrder(root, outputFile);
+    std::cout<<"ARVORE BINARIA \n";
     arvore.widthPath(root);
-    std::cout<<std::endl;
+    std::cout << std::endl;
     outputFile << "\n";
 
-
-    // Huffman huff;
-    // TreeNode *clone = arvore.copyNode(root);  
-    // std::cout << "Árvore Huffman em ordem inordem:\n";
-    //huff.printInOrder(clone);
-    //huff.printHuffmanLevels(clone);
-    //std::cout<<std::endl;
-    // std::cout << "Árvore clonada (em ordem):\n";
-    // arvore.printBinaryTreeInOrderTESTE(clone, outputFile);
 }
-
 
 void topKItems::CreatAVL(std::vector<std::pair<std::string, int>> &vectorAVLTree, std::string word, AVLTree arvoreAVL)
 {
@@ -290,6 +295,3 @@ void topKItems::CreatAVL(std::vector<std::pair<std::string, int>> &vectorAVLTree
     arvoreAVL.printAVLLevels(root);
     std::cout << "\n";
 }
-
-
-

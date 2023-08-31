@@ -64,21 +64,24 @@ void AVLTree::insertTree(TreeAVL **t, const std::pair<std::string, int> &AVL)
             insertTree(&(*t)->left, AVL);
             if ((getWeight((*t)->left) - getWeight((*t)->right)) == 2)
             {
-                if (AVL.second <= (*t)->left->data.second)
+                if (AVL.second <= (*t)->left->data.second){
                     rotacaoSimplesDireita(t);
-                else
+                }else{
                     rotacaoDuplaDireita(t);
+                }
+                    
             }
         }
-        else if (AVL.second >= (*t)->data.second)
+        else if (AVL.second > (*t)->data.second)
         {
             insertTree(&(*t)->right, AVL);
             if ((getWeight((*t)->right) - getWeight((*t)->left)) == 2)
             {
-                if (AVL.second >= (*t)->right->data.second)
+                if (AVL.second > (*t)->right->data.second){
                     rotacaoSimplesEsquerda(t);
-                else
+                }else{
                     rotacaoDuplaEsquerda(t);
+                }
             }
         }
 

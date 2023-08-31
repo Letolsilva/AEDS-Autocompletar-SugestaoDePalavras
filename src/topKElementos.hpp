@@ -15,7 +15,7 @@ public:
     void init(const std::string &filename);
     void printTopK(int k);
     void topKWords(int k);
-    void processListAndDisplay(const std::string &listFilename, std::ofstream &outputFile);
+    void processListAndDisplay(const std::string &listFilename, std::ofstream &outputFile, int k);
 
 private:
     std::unordered_map<std::string, std::unordered_map<std::string, int>> wordCountPerFile;

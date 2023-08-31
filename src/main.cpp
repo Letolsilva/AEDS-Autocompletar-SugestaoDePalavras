@@ -31,7 +31,7 @@ int main()
 
         std::string listFilename = "data/lista.txt";
         outputFile << "Arquivo " << i << std::endl;
-        processor.processListAndDisplay(listFilename, outputFile); 
+        processor.processListAndDisplay(listFilename, outputFile, k); 
         processor.wordCount.clear();
     }
 

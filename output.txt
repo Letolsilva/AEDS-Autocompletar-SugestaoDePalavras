@@ -1,0 +1,54 @@
+Arquivo 1
+Palavra: imanente
+Frequência: 104
+Árvore Binária em ordem inordem:
+
+Palavra: condição
+Frequência: 134
+Árvore Binária em ordem inordem:
+
+Arquivo 2
+Palavra: imanente
+Frequência: 109
+Árvore Binária em ordem inordem:
+
+Palavra: condição
+Frequência: 133
+Árvore Binária em ordem inordem:
+
+Arquivo 3
+Palavra: imanente
+Frequência: 0
+Árvore Binária em ordem inordem:
+
+Palavra: condição
+Frequência: 0
+Árvore Binária em ordem inordem:
+
+Arquivo 4
+Palavra: imanente
+Frequência: 0
+Árvore Binária em ordem inordem:
+
+Palavra: condição
+Frequência: 0
+Árvore Binária em ordem inordem:
+
+Arquivo 5
+Palavra: imanente
+Frequência: 0
+Árvore Binária em ordem inordem:
+
+Palavra: condição
+Frequência: 0
+Árvore Binária em ordem inordem:
+
+Arquivo 6
+Palavra: imanente
+Frequência: 0
+Árvore Binária em ordem inordem:
+
+Palavra: condição
+Frequência: 0
+Árvore Binária em ordem inordem:
+

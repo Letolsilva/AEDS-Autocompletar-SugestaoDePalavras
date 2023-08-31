@@ -1,17 +1,46 @@
 #ifndef HUFFMANTREE_HPP
 #define HUFFMANTREE_HPP
 #include <string>
-#include <map>
+#include <queue>
+#include <vector>
 #include "BinaryTree.hpp"
 
 class Huffman
 {
 public:
-    void printInOrder(TreeNode *node);
-    void printHuffmanLevels(TreeNode *t);
- 
+    std::string word; // Adicione este campo para armazenar a palavra
+    int freq;
+    Huffman *left;
+    Huffman *right;
+
+    Huffman(std::string word, int frequency)
+    {
+        this->word = word;
+        freq = frequency;
+        left = right = NULL;
+    }
+};
+
+class Compare
+{
+public:
+    bool operator()(Huffman *a, Huffman *b)
+    {
+        return a->freq > b->freq;
+    }
+};
+
+class HuffmanTree
+{
 private:
-    
+    Huffman *generateTree(std::priority_queue<Huffman *, std::vector<Huffman *>, Compare> pq);
+
+public:
+    void printInOrder(Huffman *node);
+    void printHuffmanLevels(Huffman *t);
+    Huffman *generateHuffmanTree(std::priority_queue<Huffman *, std::vector<Huffman *>, Compare> &pq);
+    void HuffmanCodes(std::string data[], int freq[], int size, int K);
+    void printCodes(Huffman* root,int arr[], int top);
 };
 
 #endif
