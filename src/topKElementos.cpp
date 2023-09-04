@@ -192,7 +192,6 @@ void topKItems::processListAndDisplay(const std::string &listFilename, std::ofst
         std::cerr << "Erro ao abrir o arquivo de lista: " << listFilename << std::endl;
         return;
     }
-
     std::string word;
     while (listFile >> word)
     {
@@ -228,6 +227,7 @@ void topKItems::processListAndDisplay(const std::string &listFilename, std::ofst
         {
             outputFile<<"-------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<std::endl;
             outputFile<< word << " não encontrada no texto "<< numFiles << std::endl;
+            std::cout<< word << " não encontrada no texto "<< numFiles << std::endl;
             continue;
         }
         writeFormattedToFile(outputFile, numFiles, word);
@@ -239,14 +239,15 @@ void topKItems::processListAndDisplay(const std::string &listFilename, std::ofst
 
         HuffmanTree huffmanTree;
         CreatHuffman(vectortopKHeapAux, k, huffmanTree, outputFile);
-
-        // std::cout << "Top K Palavras depois:\n";
-        // for (const auto &entry : vectortopKHeapAux)
-        // {
-        //     std::cout << entry.first << ": " << entry.second << "\n";
-        // }
-        // std::cout << "-------------------\n";
-        // std::cout << "\n";
+        std::cout<< word;
+        std::cout << wordCount[word] << std::endl;
+        std::cout << "Top K Palavras depois:\n";
+        for (const auto &entry : vectortopKHeapAux)
+        {
+            std::cout << entry.first << ": " << entry.second << "\n";
+        }
+        std::cout << "-------------------\n";
+        std::cout << "\n";
     }
 
     listFile.close();
@@ -254,6 +255,7 @@ void topKItems::processListAndDisplay(const std::string &listFilename, std::ofst
 
 void topKItems::CreatTree(std::vector<std::pair<std::string, int>> &vectorBasicTree, std::ofstream &outputFile, basicTree arvore)
 {
+    //Testada e tudo certo, check!
     TreeNode *root = nullptr;
     for (const auto &entry : vectorBasicTree)
     {
@@ -284,10 +286,10 @@ void topKItems::CreatAVL(std::vector<std::pair<std::string, int>> &vectorAVLTree
     outputFile << std::endl;
     outputFile << "\n";
 
-    // std::cout << "Árvore AVL em ordem inordem:\n";
+     std::cout << "Árvore AVL em ordem inordem:\n";
     //  arvoreAVL.printInOrder(root);
-    // arvoreAVL.printAVLLevels(root);
-    // std::cout << "\n";
+    //arvoreAVL.printAVLLevels(root);
+    //std::cout << "\n";
 }
 void topKItems::CreatHuffman(std::vector<std::pair<std::string, int>> &vectorHuffmanTree, int k, HuffmanTree arvoreHuffman, std::ofstream &outputFile)
 {
@@ -306,8 +308,7 @@ void topKItems::CreatHuffman(std::vector<std::pair<std::string, int>> &vectorHuf
     outputFile << "]";
     outputFile << std::endl;
     outputFile << "\n";
-    // std::cout << "Árvore Huffman em ordem inordem:\n";
-    // arvoreHuffman.HuffmanCodes(word, freq, size, k);
+
 }
 
 void topKItems::writeFormattedToFile(std::ofstream &outputFile, int numFiles, const std::string &word)

@@ -5,12 +5,15 @@ void basicTree::insertTree(TreeNode **t, const std::pair<std::string, int> &r)
     if (*t == nullptr)
     {
         *t = new TreeNode(r);
+        (*t)->right = NULL;
+        (*t)->left = NULL;
+        (*t)->data = r;
     }
     else if (r.second <= (*t)->data.second)
     {
         insertTree(&(*t)->left, r);
     }
-    else if (r.second >= (*t)->data.second)
+    else if (r.second > (*t)->data.second)
     {
         insertTree(&(*t)->right, r);
     }
@@ -26,18 +29,6 @@ void basicTree::printBinaryTreeInOrder(TreeNode *root, std::ofstream &outputFile
     outputFile << root->data.first << " ";
     printBinaryTreeInOrder(root->right, outputFile);
 }
-
-void basicTree::printBinaryTreeInOrderTESTE(TreeNode *root, std::ofstream &outputFile)
-{
-    if (root == nullptr)
-    {
-        return;
-    }
-    printBinaryTreeInOrderTESTE(root->left, outputFile);
-    std::cout << root->data.first << ": " << root->data.second << "\n";
-    printBinaryTreeInOrderTESTE(root->right, outputFile);
-}
-
 
 void basicTree::widthPath(TreeNode *t)
 {
@@ -69,17 +60,16 @@ void basicTree::widthPath(TreeNode *t)
     }
 }
 
-TreeNode* basicTree::copyNode(TreeNode* node)
+TreeNode *basicTree::copyNode(TreeNode *node)
 {
     if (node == nullptr)
     {
         return nullptr;
     }
 
-    TreeNode* copiedNode = new TreeNode(node->data);
+    TreeNode *copiedNode = new TreeNode(node->data);
     copiedNode->left = copyNode(node->left);
     copiedNode->right = copyNode(node->right);
 
     return copiedNode;
 }
-

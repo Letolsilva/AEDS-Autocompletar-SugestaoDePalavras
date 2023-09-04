@@ -6,7 +6,7 @@ ARVORE BINÁRIA(InOrdem):
 [princípio virtual assim pode maneira wittgenstein quanto vista É sentido segundo sobre pensamento sistema priori modo condição mundo sujeito teoria ]
 
 ARVORE AVL(InOrdem):                            
-[princípio virtual assim quanto wittgenstein maneira pode É vista sentido sobre segundo sistema pensamento priori modo mundo mundo condição sujeito teoria ]
+[princípio virtual assim pode maneira wittgenstein quanto vista É sentido segundo sobre pensamento sistema priori modo condição mundo sujeito teoria ]
 
 ARVORE HUFFMAN(InOrdem):                        
 [É(0000) sentido(0001) sobre(0010) segundo(0011) pensamento(0100) sistema(0101) priori(0110) modo(0111) condição(1000) mundo(1001) sujeito(1010) teoria(1011) princípio(11000) virtual(11001) assim(11010) maneira(11011) wittgenstein(11100) pode(11101) quanto(11110) vista(11111) ]
@@ -19,7 +19,7 @@ ARVORE BINÁRIA(InOrdem):
 [princípio virtual assim pode maneira wittgenstein quanto vista É imanente sentido segundo sobre pensamento sistema priori modo mundo sujeito teoria ]
 
 ARVORE AVL(InOrdem):                            
-[princípio virtual assim quanto wittgenstein maneira pode É vista imanente sentido sobre segundo sistema pensamento priori modo mundo mundo sujeito teoria ]
+[princípio virtual assim pode maneira wittgenstein quanto vista É imanente sentido segundo sobre pensamento sistema priori modo mundo sujeito teoria ]
 
 ARVORE HUFFMAN(InOrdem):                        
 [É(0000) imanente(0001) sentido(0010) sobre(0011) segundo(0100) pensamento(0101) sistema(0110) priori(0111) modo(1000) mundo(1001) sujeito(1010) teoria(1011) princípio(11000) virtual(11001) assim(11010) maneira(11011) wittgenstein(11100) pode(11101) quanto(11110) vista(11111) ]
@@ -32,7 +32,7 @@ ARVORE BINÁRIA(InOrdem):
 [princípio virtual pode maneira wittgenstein quanto vista É imanente sentido segundo sobre pensamento sistema priori modo condição mundo sujeito teoria ]
 
 ARVORE AVL(InOrdem):                            
-[princípio virtual quanto wittgenstein maneira pode É vista imanente sentido sobre segundo sistema pensamento priori modo mundo mundo condição sujeito teoria ]
+[princípio virtual pode maneira wittgenstein quanto vista É imanente sentido segundo sobre pensamento sistema priori modo condição mundo sujeito teoria ]
 
 ARVORE HUFFMAN(InOrdem):                        
 [imanente(0000) sentido(0001) sobre(0010) segundo(0011) pensamento(0100) sistema(0101) priori(0110) modo(0111) mundo(1000) condição(1001) sujeito(1010) teoria(1011) princípio(11000) virtual(11001) quanto(11010) maneira(11011) wittgenstein(11100) pode(11101) É(11110) vista(11111) ]
@@ -45,7 +45,7 @@ ARVORE BINÁRIA(InOrdem):
 [virtual assim pode wittgenstein quanto maneira vista É imanente sentido segundo sobre pensamento sistema priori modo condição mundo sujeito teoria ]
 
 ARVORE AVL(InOrdem):                            
-[virtual assim maneira quanto wittgenstein pode É vista imanente sentido sobre segundo sistema pensamento priori modo mundo mundo condição sujeito teoria ]
+[virtual assim pode wittgenstein quanto maneira vista É imanente sentido segundo sobre pensamento sistema priori modo condição mundo sujeito teoria ]
 
 ARVORE HUFFMAN(InOrdem):                        
 [imanente(0000) sentido(0001) sobre(0010) segundo(0011) pensamento(0100) sistema(0101) priori(0110) modo(0111) condição(1000) mundo(1001) sujeito(1010) teoria(1011) virtual(11000) assim(11001) pode(11010) quanto(11011) maneira(11100) wittgenstein(11101) vista(11110) É(11111) ]
@@ -60,7 +60,7 @@ ARVORE BINÁRIA(InOrdem):
 [infinito respeito wittgenstein possível É maneira vista pode princípio sentido segundo sobre pensamento sistema modo condição mundo priori sujeito teoria ]
 
 ARVORE AVL(InOrdem):                            
-[infinito respeito vista maneira É possível wittgenstein pode princípio sentido sobre segundo pensamento sistema modo condição priori mundo sujeito teoria ]
+[infinito respeito wittgenstein possível É maneira vista pode princípio sentido segundo sobre pensamento sistema modo condição mundo priori sujeito teoria ]
 
 ARVORE HUFFMAN(InOrdem):                        
 [princípio(0000) sentido(0001) segundo(0010) sobre(0011) pensamento(0100) sistema(0101) modo(0110) condição(0111) priori(1000) mundo(1001) sujeito(1010) infinito(10110) respeito(10111) wittgenstein(11000) É(11001) vista(11010) possível(11011) maneira(11100) pode(11101) teoria(1111) ]
@@ -73,7 +73,7 @@ ARVORE BINÁRIA(InOrdem):
 [infinito respeito wittgenstein possível É maneira vista pode princípio imanente sentido segundo sobre pensamento sistema modo mundo priori sujeito teoria ]
 
 ARVORE AVL(InOrdem):                            
-[infinito respeito vista maneira É possível wittgenstein pode princípio imanente imanente sentido sobre segundo pensamento sistema modo priori mundo sujeito teoria ]
+[infinito respeito wittgenstein possível É maneira vista pode princípio imanente sentido segundo sobre pensamento sistema modo mundo priori sujeito teoria ]
 
 ARVORE HUFFMAN(InOrdem):                        
 [princípio(0000) imanente(0001) sentido(0010) segundo(0011) sobre(0100) pensamento(0101) sistema(0110) modo(0111) mundo(1000) priori(1001) sujeito(1010) infinito(10110) respeito(10111) wittgenstein(11000) É(11001) vista(11010) possível(11011) maneira(11100) pode(11101) teoria(1111) ]
@@ -86,7 +86,7 @@ ARVORE BINÁRIA(InOrdem):
 [respeito wittgenstein possível É vista maneira pode princípio imanente sentido segundo sobre pensamento sistema modo condição mundo priori sujeito teoria ]
 
 ARVORE AVL(InOrdem):                            
-[respeito maneira vista É possível wittgenstein pode princípio imanente sentido sobre segundo pensamento sistema modo condição priori mundo sujeito teoria ]
+[respeito wittgenstein possível É vista maneira pode princípio imanente sentido segundo sobre pensamento sistema modo condição mundo priori sujeito teoria ]
 
 ARVORE HUFFMAN(InOrdem):                        
 [imanente(0000) sentido(0001) segundo(0010) sobre(0011) pensamento(0100) sistema(0101) modo(0110) condição(0111) priori(1000) mundo(1001) sujeito(1010) respeito(10110) vista(10111) possível(11000) wittgenstein(11001) maneira(11010) É(11011) teoria(1110) pode(11110) princípio(11111) ]
@@ -99,7 +99,7 @@ ARVORE BINÁRIA(InOrdem):
 [respeito wittgenstein possível É vista maneira pode princípio imanente sentido segundo sobre pensamento sistema modo condição mundo priori sujeito teoria ]
 
 ARVORE AVL(InOrdem):                            
-[respeito maneira vista É possível wittgenstein pode princípio imanente sentido sobre segundo pensamento sistema modo condição priori mundo sujeito teoria ]
+[respeito wittgenstein possível É vista maneira pode princípio imanente sentido segundo sobre pensamento sistema modo condição mundo priori sujeito teoria ]
 
 ARVORE HUFFMAN(InOrdem):                        
 [imanente(0000) sentido(0001) segundo(0010) sobre(0011) pensamento(0100) sistema(0101) modo(0110) condição(0111) priori(1000) mundo(1001) sujeito(1010) respeito(10110) vista(10111) possível(11000) wittgenstein(11001) maneira(11010) É(11011) teoria(1110) pode(11110) princípio(11111) ]
@@ -118,7 +118,7 @@ ARVORE BINÁRIA(InOrdem):
 [ressaltar condições atual vez importante melhoria impacto importância sistema estabelecimento pode informações É formas quadros modo necessidade podemos processo sentido ]
 
 ARVORE AVL(InOrdem):                            
-[importante vez atual condições ressaltar podemos necessidade modo quadros formas É informações pode pode estabelecimento sistema importância impacto impacto melhoria sentido processo ]
+[ressaltar condições atual vez importante melhoria impacto importância sistema estabelecimento pode informações É formas quadros modo necessidade podemos processo sentido ]
 
 ARVORE HUFFMAN(InOrdem):                        
 [impacto(0000) É(0001) informações(0010) estabelecimento(0011) sistema(0100) necessidade(0101) importância(0110) podemos(0111) pode(1000) melhoria(1001) processo(1010) sentido(1011) vez(11000) condições(11001) importante(11010) atual(11011) ressaltar(11100) modo(11101) formas(11110) quadros(11111) ]
@@ -139,7 +139,7 @@ ARVORE BINÁRIA(InOrdem):
 [longo podemos segurança impacto importância É ainda modo condições geral política processo metas eleitores sentido melhoria saúde atual políticas político ]
 
 ARVORE AVL(InOrdem):                            
-[geral condições modo ainda É importância impacto segurança podemos longo longo processo política eleitores metas sentido atual saúde melhoria políticas político ]
+[longo podemos segurança impacto importância É ainda modo condições geral política processo metas eleitores sentido melhoria saúde atual políticas político ]
 
 ARVORE HUFFMAN(InOrdem):                        
 [política(0000) processo(0001) eleitores(0010) metas(0011) político(010) sentido(0110) saúde(0111) melhoria(1000) atual(1001) políticas(1010) geral(10110) modo(10111) ainda(11000) segurança(11001) É(11010) longo(11011) impacto(11100) importância(11101) podemos(11110) condições(11111) ]
@@ -160,7 +160,7 @@ ARVORE BINÁRIA(InOrdem):
 [rede software envolvidos utilizados integridade necessidade hardware tempo impacto desenvolvimento aumento melhor sistema informações dados novas ti implantação segurança utilização ]
 
 ARVORE AVL(InOrdem):                            
-[necessidade integridade utilizados envolvidos software rede tempo hardware sistema melhor aumento desenvolvimento impacto ti novas dados informações informações implantação segurança utilização ]
+[rede software envolvidos utilizados integridade necessidade hardware tempo impacto desenvolvimento aumento melhor sistema informações dados novas ti implantação segurança utilização ]
 
 ARVORE HUFFMAN(InOrdem):                        
 [sistema(0000) aumento(0001) impacto(0010) desenvolvimento(0011) melhor(0100) novas(0101) dados(0110) ti(0111) informações(1000) implantação(1001) software(10100) rede(10101) envolvidos(10110) integridade(10111) necessidade(11000) utilizados(11001) segurança(1101) tempo(11100) hardware(11101) utilização(1111) ]
@@ -181,7 +181,7 @@ ARVORE BINÁRIA(InOrdem):
 [sobre rede software dúvidas pode problemas desenvolvimento tempo impacto novas sistema informações hardware aumento ti dados melhor implantação segurança utilização ]
 
 ARVORE AVL(InOrdem):                            
-[problemas pode dúvidas software rede sobre sistema novas impacto impacto tempo tempo desenvolvimento hardware informações melhor dados dados ti aumento implantação segurança utilização ]
+[sobre rede software dúvidas pode problemas desenvolvimento tempo impacto novas sistema informações hardware aumento ti dados melhor implantação segurança utilização ]
 
 ARVORE HUFFMAN(InOrdem):                        
 [novas(0000) hardware(0001) utilização(001) informações(0100) dados(0101) aumento(0110) melhor(0111) ti(1000) implantação(1001) software(10100) sobre(10101) segurança(1011) problemas(11000) dúvidas(11001) rede(11010) pode(11011) sistema(11100) impacto(11101) desenvolvimento(11110) tempo(11111) ]
