@@ -32,7 +32,6 @@ private:
     void CreatAVL(std::vector<std::pair<std::string, int>> &vectorAVLTree, AVLTree arvoreAVL, std::ofstream &outputFile);
     void CreatHuffman(std::vector<std::pair<std::string, int>> &vectorHuffmanTree, int k, HuffmanTree arvoreHuffman, std::ofstream &outputFile);
     void writeFormattedToFile(std::ofstream &outputFile, int numFiles, const std::string &word);
-    void clean(std::vector<std::pair<std::string, int>> &vectorBasicTree, std::vector<std::pair<std::string, int>> &vectorAVLTree, std::vector<std::pair<std::string, int>> &vectorHuffmanTree, std::priority_queue<Huffman *, std::vector<Huffman *>, Compare> &pq);
 };
 
 #endif

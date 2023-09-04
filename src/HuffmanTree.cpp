@@ -71,6 +71,7 @@ void HuffmanTree::HuffmanCodes(std::string data[], int freq[], int size, int K, 
     Huffman* root = generateHuffmanTree(pq);
     int arr[K];
     printCodes(root,arr, 0, outputFile);
+    // std::cout<<"Huffman"<<std::endl;
     // printHuffmanLevels(root);
 }
 

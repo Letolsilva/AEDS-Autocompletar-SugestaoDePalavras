@@ -11,9 +11,8 @@ struct TreeAVL
     std::pair<std::string, int> data;
     TreeAVL *left;
     TreeAVL *right;
-    int height;
     int weight;
-    TreeAVL(const std::pair<std::string, int> &d) : data(d), left(nullptr), right(nullptr), height(1) {}
+    TreeAVL(const std::pair<std::string, int> &d) : data(d), left(nullptr), right(nullptr), weight(0) {}
 };
 
 class AVLTree
@@ -35,4 +34,4 @@ public:
     void printAVLLevels(TreeAVL *t);
     void insertTree(TreeAVL **t, const std::pair<std::string, int> &data);
 };
-#endif // TREEAVL_HPP
+#endif 

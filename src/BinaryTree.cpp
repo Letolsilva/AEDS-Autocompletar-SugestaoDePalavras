@@ -60,16 +60,3 @@ void basicTree::widthPath(TreeNode *t)
     }
 }
 
-TreeNode *basicTree::copyNode(TreeNode *node)
-{
-    if (node == nullptr)
-    {
-        return nullptr;
-    }
-
-    TreeNode *copiedNode = new TreeNode(node->data);
-    copiedNode->left = copyNode(node->left);
-    copiedNode->right = copyNode(node->right);
-
-    return copiedNode;
-}

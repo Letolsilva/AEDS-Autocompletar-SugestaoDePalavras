@@ -239,15 +239,17 @@ void topKItems::processListAndDisplay(const std::string &listFilename, std::ofst
 
         HuffmanTree huffmanTree;
         CreatHuffman(vectortopKHeapAux, k, huffmanTree, outputFile);
-        std::cout<< word;
-        std::cout << wordCount[word] << std::endl;
-        std::cout << "Top K Palavras depois:\n";
-        for (const auto &entry : vectortopKHeapAux)
-        {
-            std::cout << entry.first << ": " << entry.second << "\n";
-        }
-        std::cout << "-------------------\n";
-        std::cout << "\n";
+
+        // std::cout << "\n";
+        // std::cout<< word;
+        // std::cout << wordCount[word] << std::endl;
+        // std::cout << "Top K Palavras depois:\n";
+        // for (const auto &entry : vectortopKHeapAux)
+        // {
+        //     std::cout << entry.first << ": " << entry.second << "\n";
+        // }
+        // std::cout << "-------------------\n";
+        // std::cout << "\n";
         
         
         
@@ -258,21 +260,19 @@ void topKItems::processListAndDisplay(const std::string &listFilename, std::ofst
 
 void topKItems::CreatTree(std::vector<std::pair<std::string, int>> &vectorBasicTree, std::ofstream &outputFile, basicTree arvore)
 {
-    //Testada e tudo certo, check!
     TreeNode *root = nullptr;
     for (const auto &entry : vectorBasicTree)
     {
         arvore.insertTree(&root, entry);
     }
-    // outputFile << "Árvore Binária em ordem inordem:\n";
     outputFile << std::left << std::setw(48) << std::setfill(' ') << "ARVORE BINÁRIA(InOrdem): " << std::endl;
     outputFile << "[";
     arvore.printBinaryTreeInOrder(root, outputFile);
     outputFile << "]";
     outputFile << std::endl;
-    // arvore.widthPath(root);
-    // std::cout << std::endl;
     outputFile << "\n";
+    //arvore.widthPath(root);
+    //std::cout << std::endl;
 }
 
 void topKItems::CreatAVL(std::vector<std::pair<std::string, int>> &vectorAVLTree, AVLTree arvoreAVL, std::ofstream &outputFile)
@@ -289,9 +289,9 @@ void topKItems::CreatAVL(std::vector<std::pair<std::string, int>> &vectorAVLTree
     outputFile << std::endl;
     outputFile << "\n";
 
-    //std::cout << "Árvore AVL em ordem inordem:\n";
-    //arvoreAVL.printAVLLevels(root);
-    //std::cout << "\n";
+    // std::cout << "Árvore AVL em ordem inordem:\n";
+    // arvoreAVL.printAVLLevels(root);
+    // std::cout << "\n";
 }
 void topKItems::CreatHuffman(std::vector<std::pair<std::string, int>> &vectorHuffmanTree, int k, HuffmanTree arvoreHuffman, std::ofstream &outputFile)
 {

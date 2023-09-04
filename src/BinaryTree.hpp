@@ -25,10 +25,9 @@ public:
     void insertTree(TreeNode **t, const std::pair<std::string, int> &r);
     void printBinaryTreeInOrder(TreeNode *root, std::ofstream &outputFile);
     void widthPath(TreeNode *t);
-    TreeNode *copyNode(TreeNode *node);
 
 private:
-    TreeNode *binaryTreeRoot = nullptr;
+    //TreeNode *binaryTreeRoot = nullptr;
 };
 
 #endif
