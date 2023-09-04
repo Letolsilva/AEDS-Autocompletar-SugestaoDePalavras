@@ -248,6 +248,9 @@ void topKItems::processListAndDisplay(const std::string &listFilename, std::ofst
         }
         std::cout << "-------------------\n";
         std::cout << "\n";
+        
+        
+        
     }
 
     listFile.close();
@@ -286,8 +289,7 @@ void topKItems::CreatAVL(std::vector<std::pair<std::string, int>> &vectorAVLTree
     outputFile << std::endl;
     outputFile << "\n";
 
-     std::cout << "Árvore AVL em ordem inordem:\n";
-    //  arvoreAVL.printInOrder(root);
+    //std::cout << "Árvore AVL em ordem inordem:\n";
     //arvoreAVL.printAVLLevels(root);
     //std::cout << "\n";
 }
@@ -323,3 +325,4 @@ void topKItems::writeFormattedToFile(std::ofstream &outputFile, int numFiles, co
                << std::left << std::setw(20) << wordCount[word] << std::endl;
     outputFile << std::endl;
 }
+
