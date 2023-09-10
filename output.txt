@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------------------------------------------
-TEXTOS      PALAVRAS DA LISTA   FREQUENCIA          
-Arquivo     1 imanente            104                 
+TEXTOS    PALAVRAS DA LISTA   FREQUENCIA          
+Arquivo 1  imanente            104                 
 
 ARVORE BINÁRIA(InOrdem):                       
 [princípio virtual assim pode maneira wittgenstein quanto vista É sentido segundo sobre pensamento sistema priori modo condição mundo sujeito teoria ]
@@ -12,8 +12,8 @@ ARVORE HUFFMAN(InOrdem):
 [É(0000) sentido(0001) sobre(0010) segundo(0011) pensamento(0100) sistema(0101) priori(0110) modo(0111) condição(1000) mundo(1001) sujeito(1010) teoria(1011) princípio(11000) virtual(11001) assim(11010) maneira(11011) wittgenstein(11100) pode(11101) quanto(11110) vista(11111) ]
 
 ---------------------------------------------------------------------------------------------------------------------------------------
-TEXTOS      PALAVRAS DA LISTA   FREQUENCIA          
-Arquivo     1 condição          134                 
+TEXTOS    PALAVRAS DA LISTA   FREQUENCIA          
+Arquivo 1  condição          134                 
 
 ARVORE BINÁRIA(InOrdem):                       
 [princípio virtual assim pode maneira wittgenstein quanto vista É imanente sentido segundo sobre pensamento sistema priori modo mundo sujeito teoria ]
@@ -25,8 +25,8 @@ ARVORE HUFFMAN(InOrdem):
 [É(0000) imanente(0001) sentido(0010) sobre(0011) segundo(0100) pensamento(0101) sistema(0110) priori(0111) modo(1000) mundo(1001) sujeito(1010) teoria(1011) princípio(11000) virtual(11001) assim(11010) maneira(11011) wittgenstein(11100) pode(11101) quanto(11110) vista(11111) ]
 
 ---------------------------------------------------------------------------------------------------------------------------------------
-TEXTOS      PALAVRAS DA LISTA   FREQUENCIA          
-Arquivo     1 assim               94                  
+TEXTOS    PALAVRAS DA LISTA   FREQUENCIA          
+Arquivo 1  assim               94                  
 
 ARVORE BINÁRIA(InOrdem):                       
 [princípio virtual pode maneira wittgenstein quanto vista É imanente sentido segundo sobre pensamento sistema priori modo condição mundo sujeito teoria ]
@@ -38,8 +38,8 @@ ARVORE HUFFMAN(InOrdem):
 [imanente(0000) sentido(0001) sobre(0010) segundo(0011) pensamento(0100) sistema(0101) priori(0110) modo(0111) mundo(1000) condição(1001) sujeito(1010) teoria(1011) princípio(11000) virtual(11001) quanto(11010) maneira(11011) wittgenstein(11100) pode(11101) É(11110) vista(11111) ]
 
 ---------------------------------------------------------------------------------------------------------------------------------------
-TEXTOS      PALAVRAS DA LISTA   FREQUENCIA          
-Arquivo     1 filosofia           19                  
+TEXTOS    PALAVRAS DA LISTA   FREQUENCIA          
+Arquivo 1  filosofia           19                  
 
 ARVORE BINÁRIA(InOrdem):                       
 [virtual assim pode wittgenstein quanto maneira vista É imanente sentido segundo sobre pensamento sistema priori modo condição mundo sujeito teoria ]
@@ -53,8 +53,8 @@ ARVORE HUFFMAN(InOrdem):
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 hadware não encontrada no texto 1
 ---------------------------------------------------------------------------------------------------------------------------------------
-TEXTOS      PALAVRAS DA LISTA   FREQUENCIA          
-Arquivo     2 imanente            109                 
+TEXTOS    PALAVRAS DA LISTA   FREQUENCIA          
+Arquivo 2  imanente            109                 
 
 ARVORE BINÁRIA(InOrdem):                       
 [infinito respeito wittgenstein possível É maneira vista pode princípio sentido segundo sobre pensamento sistema modo condição mundo priori sujeito teoria ]
@@ -66,8 +66,8 @@ ARVORE HUFFMAN(InOrdem):
 [princípio(0000) sentido(0001) segundo(0010) sobre(0011) pensamento(0100) sistema(0101) modo(0110) condição(0111) priori(1000) mundo(1001) sujeito(1010) infinito(10110) respeito(10111) wittgenstein(11000) É(11001) vista(11010) possível(11011) maneira(11100) pode(11101) teoria(1111) ]
 
 ---------------------------------------------------------------------------------------------------------------------------------------
-TEXTOS      PALAVRAS DA LISTA   FREQUENCIA          
-Arquivo     2 condição          133                 
+TEXTOS    PALAVRAS DA LISTA   FREQUENCIA          
+Arquivo 2  condição          133                 
 
 ARVORE BINÁRIA(InOrdem):                       
 [infinito respeito wittgenstein possível É maneira vista pode princípio imanente sentido segundo sobre pensamento sistema modo mundo priori sujeito teoria ]
@@ -79,8 +79,8 @@ ARVORE HUFFMAN(InOrdem):
 [princípio(0000) imanente(0001) sentido(0010) segundo(0011) sobre(0100) pensamento(0101) sistema(0110) modo(0111) mundo(1000) priori(1001) sujeito(1010) infinito(10110) respeito(10111) wittgenstein(11000) É(11001) vista(11010) possível(11011) maneira(11100) pode(11101) teoria(1111) ]
 
 ---------------------------------------------------------------------------------------------------------------------------------------
-TEXTOS      PALAVRAS DA LISTA   FREQUENCIA          
-Arquivo     2 assim               86                  
+TEXTOS    PALAVRAS DA LISTA   FREQUENCIA          
+Arquivo 2  assim               86                  
 
 ARVORE BINÁRIA(InOrdem):                       
 [respeito wittgenstein possível É vista maneira pode princípio imanente sentido segundo sobre pensamento sistema modo condição mundo priori sujeito teoria ]
@@ -92,8 +92,8 @@ ARVORE HUFFMAN(InOrdem):
 [imanente(0000) sentido(0001) segundo(0010) sobre(0011) pensamento(0100) sistema(0101) modo(0110) condição(0111) priori(1000) mundo(1001) sujeito(1010) respeito(10110) vista(10111) possível(11000) wittgenstein(11001) maneira(11010) É(11011) teoria(1110) pode(11110) princípio(11111) ]
 
 ---------------------------------------------------------------------------------------------------------------------------------------
-TEXTOS      PALAVRAS DA LISTA   FREQUENCIA          
-Arquivo     2 filosofia           19                  
+TEXTOS    PALAVRAS DA LISTA   FREQUENCIA          
+Arquivo 2  filosofia           19                  
 
 ARVORE BINÁRIA(InOrdem):                       
 [respeito wittgenstein possível É vista maneira pode princípio imanente sentido segundo sobre pensamento sistema modo condição mundo priori sujeito teoria ]
@@ -111,8 +111,8 @@ imanente não encontrada no texto 3
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 condição não encontrada no texto 3
 ---------------------------------------------------------------------------------------------------------------------------------------
-TEXTOS      PALAVRAS DA LISTA   FREQUENCIA          
-Arquivo     3 assim               199                 
+TEXTOS    PALAVRAS DA LISTA   FREQUENCIA          
+Arquivo 3  assim               199                 
 
 ARVORE BINÁRIA(InOrdem):                       
 [ressaltar condições atual vez importante melhoria impacto importância sistema estabelecimento pode informações É formas quadros modo necessidade podemos processo sentido ]
@@ -132,8 +132,8 @@ imanente não encontrada no texto 4
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 condição não encontrada no texto 4
 ---------------------------------------------------------------------------------------------------------------------------------------
-TEXTOS      PALAVRAS DA LISTA   FREQUENCIA          
-Arquivo     4 assim               201                 
+TEXTOS    PALAVRAS DA LISTA   FREQUENCIA          
+Arquivo 4  assim               201                 
 
 ARVORE BINÁRIA(InOrdem):                       
 [longo podemos segurança impacto importância É ainda modo condições geral política processo metas eleitores sentido melhoria saúde atual políticas político ]
@@ -153,8 +153,8 @@ imanente não encontrada no texto 5
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 condição não encontrada no texto 5
 ---------------------------------------------------------------------------------------------------------------------------------------
-TEXTOS      PALAVRAS DA LISTA   FREQUENCIA          
-Arquivo     5 assim               199                 
+TEXTOS    PALAVRAS DA LISTA   FREQUENCIA          
+Arquivo 5  assim               199                 
 
 ARVORE BINÁRIA(InOrdem):                       
 [rede software envolvidos utilizados integridade necessidade hardware tempo impacto desenvolvimento aumento melhor sistema informações dados novas ti implantação segurança utilização ]
@@ -174,8 +174,8 @@ imanente não encontrada no texto 6
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 condição não encontrada no texto 6
 ---------------------------------------------------------------------------------------------------------------------------------------
-TEXTOS      PALAVRAS DA LISTA   FREQUENCIA          
-Arquivo     6 assim               201                 
+TEXTOS    PALAVRAS DA LISTA   FREQUENCIA          
+Arquivo 6  assim               201                 
 
 ARVORE BINÁRIA(InOrdem):                       
 [sobre rede software dúvidas pode problemas desenvolvimento tempo impacto novas sistema informações hardware aumento ti dados melhor implantação segurança utilização ]

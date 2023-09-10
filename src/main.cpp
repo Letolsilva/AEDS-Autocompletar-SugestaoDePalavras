@@ -27,12 +27,9 @@ int main()
         topKItems processor;
         processor.init(filename); 
         processor.topKWords(k);  
-        // processor.printTopK(k);
 
-        std::string listFilename = "data/lista.txt";
-        std::cout << "Arquivo " << i << std::endl;
-        processor.processListAndDisplay(listFilename, outputFile, k, i); 
-
+        std::string listFilename = "data/input.txt";
+        processor.VerificaArvoreECria(listFilename, outputFile, k, i); 
         processor.wordCount.clear();
     }
 

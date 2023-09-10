@@ -32,6 +32,6 @@ public:
     ~AVLTree();
     void printInOrder(TreeAVL *t, std::ofstream &outputFile);
     void printAVLLevels(TreeAVL *t);
-    void insertTree(TreeAVL **t, const std::pair<std::string, int> &data);
+    void insertAVL(TreeAVL **t, const std::pair<std::string, int> &data);
 };
 #endif 

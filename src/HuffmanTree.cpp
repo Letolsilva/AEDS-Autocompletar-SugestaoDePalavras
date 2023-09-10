@@ -44,7 +44,6 @@ Huffman* HuffmanTree::generateHuffmanTree(std::priority_queue<Huffman*, std::vec
         Huffman *right = pq.top();
         pq.pop();
 
-        // Crie um novo nó para representar a palavra combinada
         Huffman *combined = new Huffman("",left->freq + right->freq);
         combined->left = left;
         combined->right = right;
@@ -53,10 +52,7 @@ Huffman* HuffmanTree::generateHuffmanTree(std::priority_queue<Huffman*, std::vec
     }
 
     return pq.top();
-    // Huffman *root = pq.top();
-    // pq.pop();
 
-    // return root;
 }
 
 

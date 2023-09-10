@@ -16,10 +16,10 @@ public:
     void init(const std::string &filename);
     void printTopK(int k);
     void topKWords(int k);
-    void processListAndDisplay(const std::string &listFilename, std::ofstream &outputFile, int k, int numFiles);
+    void VerificaArvoreECria(const std::string &listFilename, std::ofstream &outputFile, int k, int numFiles);
 
 private:
-    std::unordered_map<std::string, std::unordered_map<std::string, int>> wordCountPerFile;
+    std::unordered_map<std::string, std::unordered_map<std::string, int>> wordCountPorArquivo;
     std::unordered_set<std::string> unoderedStopWords;
     std::vector<std::pair<std::string, int>> vectortopKHeap;
 
@@ -31,7 +31,7 @@ private:
     void CreatTree(std::vector<std::pair<std::string, int>> &vectorBasicTree, std::ofstream &outputFile,  basicTree arvore);
     void CreatAVL(std::vector<std::pair<std::string, int>> &vectorAVLTree, AVLTree arvoreAVL, std::ofstream &outputFile);
     void CreatHuffman(std::vector<std::pair<std::string, int>> &vectorHuffmanTree, int k, HuffmanTree arvoreHuffman, std::ofstream &outputFile);
-    void writeFormattedToFile(std::ofstream &outputFile, int numFiles, const std::string &word);
+    void headerOutput(std::ofstream &outputFile, int numFiles, const std::string &word);
 };
 
 #endif

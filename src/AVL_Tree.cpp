@@ -56,7 +56,7 @@ void AVLTree::rotacaoDuplaEsquerda(TreeAVL **t)
     rotacaoSimplesEsquerda(t);
 }
 
-void AVLTree::insertTree(TreeAVL **t, const std::pair<std::string, int> &AVL)
+void AVLTree::insertAVL(TreeAVL **t, const std::pair<std::string, int> &AVL)
 {
     if (*t == nullptr)
     {
@@ -72,7 +72,7 @@ void AVLTree::insertTree(TreeAVL **t, const std::pair<std::string, int> &AVL)
         if (AVL.second < (*t)->data.second)
         {
             //std::cout << AVL.first << " " << "ESQUERDA" << std::endl;
-            insertTree(&(*t)->left, AVL);
+            insertAVL(&(*t)->left, AVL);
             if ((getWeight(&(*t)->left) - getWeight(&(*t)->right)) == 2)
             {
                //std::cout << AVL.first << " "<< "FOI IGUAL A 2 ESQUERDA" << std::endl;
@@ -91,7 +91,7 @@ void AVLTree::insertTree(TreeAVL **t, const std::pair<std::string, int> &AVL)
        else if (AVL.second >= (*t)->data.second)
         {
           // std::cout << AVL.first << " "<< "DIREITAA" << std::endl;
-            insertTree(&(*t)->right, AVL);
+            insertAVL(&(*t)->right, AVL);
             if ((getWeight(&(*t)->right) - getWeight(&(*t)->left)) == 2)
             {
               //std::cout << AVL.first << " "<< "FOI IGUAL A 2 DIREITA" << std::endl;

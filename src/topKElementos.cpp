@@ -22,7 +22,7 @@ void topKItems::init(const std::string &filename)
     {
         tokenizacao(line);
     }
-    wordCountPerFile[filename] = wordCount; // Armazena o wordCount atual no mapa separado por arquivo
+    wordCountPorArquivo[filename] = wordCount; 
     inputFile.close();
 }
 
@@ -113,7 +113,7 @@ void topKItems::topKWords(int k)
 {
     int topKHeapSize = 0;
 
-    for (const auto &fileEntry : wordCountPerFile)
+    for (const auto &fileEntry : wordCountPorArquivo)
     {
         const auto &wordCount = fileEntry.second;
 
@@ -143,12 +143,6 @@ void topKItems::topKWords(int k)
         heapify(vectortopKHeap, k, i);
     }
 
-    // // // Reorganizar os elementos dentro do heap usando heapify
-    // for (int i = k - 1; i > 0; --i)
-    // {
-    //     std::swap(vectortopKHeap[0], vectortopKHeap[i]);
-    //     heapify(vectortopKHeap, i, 0);
-    // }
 }
 
 void topKItems::printTopK(int k)
@@ -184,7 +178,7 @@ void topKItems::heapify(std::vector<std::pair<std::string, int>> &vectorAux, int
     }
 }
 
-void topKItems::processListAndDisplay(const std::string &listFilename, std::ofstream &outputFile, int k, int numFiles)
+void topKItems::VerificaArvoreECria(const std::string &listFilename, std::ofstream &outputFile, int k, int numFiles)
 {
     std::ifstream listFile(listFilename);
     if (!listFile)
@@ -227,10 +221,9 @@ void topKItems::processListAndDisplay(const std::string &listFilename, std::ofst
         {
             outputFile<<"-------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<std::endl;
             outputFile<< word << " não encontrada no texto "<< numFiles << std::endl;
-            std::cout<< word << " não encontrada no texto "<< numFiles << std::endl;
             continue;
         }
-        writeFormattedToFile(outputFile, numFiles, word);
+        headerOutput(outputFile, numFiles, word);
         basicTree arvore;
         CreatTree(vectortopKHeapAux, outputFile, arvore);
 
@@ -271,7 +264,7 @@ void topKItems::CreatTree(std::vector<std::pair<std::string, int>> &vectorBasicT
     outputFile << "]";
     outputFile << std::endl;
     outputFile << "\n";
-    //arvore.widthPath(root);
+    //arvore.printBinaryLevels(root);
     //std::cout << std::endl;
 }
 
@@ -280,7 +273,7 @@ void topKItems::CreatAVL(std::vector<std::pair<std::string, int>> &vectorAVLTree
     TreeAVL *root = nullptr;
     for (const auto &entry : vectorAVLTree)
     {
-        arvoreAVL.insertTree(&root, entry);
+        arvoreAVL.insertAVL(&root, entry);
     }
     outputFile << std::left << std::setw(48) << std::setfill(' ') << "ARVORE AVL(InOrdem): " << std::endl;
     outputFile << "[";
@@ -313,14 +306,14 @@ void topKItems::CreatHuffman(std::vector<std::pair<std::string, int>> &vectorHuf
 
 }
 
-void topKItems::writeFormattedToFile(std::ofstream &outputFile, int numFiles, const std::string &word)
+void topKItems::headerOutput(std::ofstream &outputFile, int numFiles, const std::string &word)
 {
     outputFile<< "---------------------------------------------------------------------------------------------------------------------------------------"<<std::endl;
-    outputFile << std::left << std::setw(12) << "TEXTOS"
+    outputFile << std::left << std::setw(10) << "TEXTOS"
                << std::left << std::setw(20) << "PALAVRAS DA LISTA"
                << std::left << std::setw(20) << "FREQUENCIA" << std::endl;
 
-    outputFile << std::left << std::setw(12) << "Arquivo" << numFiles << " "
+    outputFile << std::left << std::setw(8) << "Arquivo" << numFiles << "  "
                << std::left << std::setw(20) << word
                << std::left << std::setw(20) << wordCount[word] << std::endl;
     outputFile << std::endl;

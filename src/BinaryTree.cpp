@@ -30,7 +30,7 @@ void basicTree::printBinaryTreeInOrder(TreeNode *root, std::ofstream &outputFile
     printBinaryTreeInOrder(root->right, outputFile);
 }
 
-void basicTree::widthPath(TreeNode *t)
+void basicTree::printBinaryLevels(TreeNode *t)
 {
     std::queue<TreeNode *> q;
     q.push(t);
