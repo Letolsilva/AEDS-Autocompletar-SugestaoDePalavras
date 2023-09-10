@@ -1,15 +1,5 @@
 #include "HuffmanTree.hpp"
 
-void HuffmanTree::printInOrder(Huffman *node)
-{
-    if (node == nullptr)
-        return;
-
-    printInOrder(node->left);
-    std::cout << node->word << ": " << node->freq << std::endl;
-    printInOrder(node->right);
-}
-
 void HuffmanTree::printHuffmanLevels(Huffman *t)
 {
     if (t == nullptr)
@@ -54,7 +44,6 @@ Huffman* HuffmanTree::generateHuffmanTree(std::priority_queue<Huffman*, std::vec
     return pq.top();
 
 }
-
 
 void HuffmanTree::HuffmanCodes(std::string data[], int freq[], int size, int K, std::ofstream &outputFile)
 {

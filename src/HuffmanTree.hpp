@@ -9,7 +9,7 @@
 class Huffman
 {
 public:
-    std::string word; // Adicione este campo para armazenar a palavra
+    std::string word; 
     int freq;
     Huffman *left;
     Huffman *right;
@@ -34,10 +34,8 @@ public:
 class HuffmanTree
 {
 private:
-    Huffman *generateTree(std::priority_queue<Huffman *, std::vector<Huffman *>, Compare> pq);
 
 public:
-    void printInOrder(Huffman *node);
     void printHuffmanLevels(Huffman *t);
     Huffman *generateHuffmanTree(std::priority_queue<Huffman *, std::vector<Huffman *>, Compare> &pq);
     void HuffmanCodes(std::string data[], int freq[], int size, int K, std::ofstream &outputFile);

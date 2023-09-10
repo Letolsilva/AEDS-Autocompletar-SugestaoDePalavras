@@ -224,14 +224,27 @@ void topKItems::VerificaArvoreECria(const std::string &listFilename, std::ofstre
             continue;
         }
         headerOutput(outputFile, numFiles, word);
+        auto startBinary = std::chrono::high_resolution_clock::now();
         basicTree arvore;
         CreatTree(vectortopKHeapAux, outputFile, arvore);
+        auto endBinary = std::chrono::high_resolution_clock::now();
+        auto durationBinary = std::chrono::duration_cast<std::chrono::milliseconds>(endBinary - startBinary);
+        std::cout << "Tempo de execução da arvore binaria: " << durationBinary.count() << " ms" << std::endl;
 
+        auto startAVL = std::chrono::high_resolution_clock::now();
         AVLTree avlTree;
         CreatAVL(vectortopKHeapAux, avlTree, outputFile);
+        auto endAVL = std::chrono::high_resolution_clock::now();
+        auto durationAVL = std::chrono::duration_cast<std::chrono::milliseconds>(endAVL - startAVL);
+        std::cout << "Tempo de execução da arvore AVL: " << durationAVL.count() << " ms" << std::endl;
 
+        auto startHuffman = std::chrono::high_resolution_clock::now();
         HuffmanTree huffmanTree;
         CreatHuffman(vectortopKHeapAux, k, huffmanTree, outputFile);
+        auto endHuffman = std::chrono::high_resolution_clock::now();
+        auto durationHuffman = std::chrono::duration_cast<std::chrono::milliseconds>(endHuffman - startHuffman);
+        std::cout << "Tempo de execução da arvore Huffman: " << durationHuffman.count() << " ms" << std::endl;
+
 
         // std::cout << "\n";
         // std::cout<< word;
@@ -258,13 +271,14 @@ void topKItems::CreatTree(std::vector<std::pair<std::string, int>> &vectorBasicT
     {
         arvore.insertTree(&root, entry);
     }
-    outputFile << std::left << std::setw(48) << std::setfill(' ') << "ARVORE BINÁRIA(InOrdem): " << std::endl;
+    outputFile << std::left << std::setw(48) << std::setfill(' ') << "ARVORE BINÁRIA(PosOrdem): " << std::endl;
     outputFile << "[";
-    arvore.printBinaryTreeInOrder(root, outputFile);
+    arvore.printBinaryTreePosOrdem(root, outputFile);
     outputFile << "]";
     outputFile << std::endl;
     outputFile << "\n";
-    //arvore.printBinaryLevels(root);
+    // std::cout<<"Árvore binária: "<<std::endl;
+    // arvore.printBinaryLevels(root);
     //std::cout << std::endl;
 }
 
@@ -275,14 +289,14 @@ void topKItems::CreatAVL(std::vector<std::pair<std::string, int>> &vectorAVLTree
     {
         arvoreAVL.insertAVL(&root, entry);
     }
-    outputFile << std::left << std::setw(48) << std::setfill(' ') << "ARVORE AVL(InOrdem): " << std::endl;
+    outputFile << std::left << std::setw(48) << std::setfill(' ') << "ARVORE AVL(PosOrdem): " << std::endl;
     outputFile << "[";
-    arvoreAVL.printInOrder(root, outputFile);
+    arvoreAVL.printBinaryTreePosOrdem(root, outputFile);
     outputFile << "]";
     outputFile << std::endl;
     outputFile << "\n";
 
-    // std::cout << "Árvore AVL em ordem inordem:\n";
+    // std::cout << "Árvore AVL:\n";
     // arvoreAVL.printAVLLevels(root);
     // std::cout << "\n";
 }
@@ -297,7 +311,7 @@ void topKItems::CreatHuffman(std::vector<std::pair<std::string, int>> &vectorHuf
         word[i] = vectorHuffmanTree[i].first;
         freq[i] = vectorHuffmanTree[i].second;
     }
-    outputFile << std::left << std::setw(48) << std::setfill(' ') << "ARVORE HUFFMAN(InOrdem): " << std::endl;
+    outputFile << std::left << std::setw(48) << std::setfill(' ') << "ARVORE HUFFMAN(PosOrdem): " << std::endl;
     outputFile << "[";
     arvoreHuffman.HuffmanCodes(word,freq,size,k, outputFile);
     outputFile << "]";

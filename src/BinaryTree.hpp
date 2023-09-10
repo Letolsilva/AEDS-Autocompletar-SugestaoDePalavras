@@ -23,7 +23,7 @@ class basicTree
 {
 public:
     void insertTree(TreeNode **t, const std::pair<std::string, int> &r);
-    void printBinaryTreeInOrder(TreeNode *root, std::ofstream &outputFile);
+    void printBinaryTreePosOrdem(TreeNode *root, std::ofstream &outputFile);
     void printBinaryLevels(TreeNode *t);
 
 private:

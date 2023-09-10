@@ -19,15 +19,13 @@ void basicTree::insertTree(TreeNode **t, const std::pair<std::string, int> &r)
     }
 }
 
-void basicTree::printBinaryTreeInOrder(TreeNode *root, std::ofstream &outputFile)
+void basicTree::printBinaryTreePosOrdem(TreeNode *root, std::ofstream &outputFile)
 {
-    if (root == nullptr)
-    {
-        return;
-    }
-    printBinaryTreeInOrder(root->left, outputFile);
+  if(!(root == NULL)){
+    printBinaryTreePosOrdem(root->left, outputFile); 
+    printBinaryTreePosOrdem(root->right, outputFile); 
     outputFile << root->data.first << " ";
-    printBinaryTreeInOrder(root->right, outputFile);
+  }
 }
 
 void basicTree::printBinaryLevels(TreeNode *t)

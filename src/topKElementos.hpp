@@ -5,6 +5,7 @@
 #include <unordered_set>
 #include <vector>
 #include <iomanip> 
+#include <chrono>
 #include "BinaryTree.hpp"
 #include "AVL_Tree.hpp"
 #include "HuffmanTree.hpp"

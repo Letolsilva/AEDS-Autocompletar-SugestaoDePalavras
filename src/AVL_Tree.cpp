@@ -117,15 +117,13 @@ void AVLTree::insertAVL(TreeAVL **t, const std::pair<std::string, int> &AVL)
     (*t)->weight = getMaxWeight(getWeight(&(*t)->left), getWeight(&(*t)->right)) + 1;
 }
 
-void AVLTree::printInOrder(TreeAVL *t, std::ofstream &outputFile)
+void AVLTree::printBinaryTreePosOrdem(TreeAVL *t, std::ofstream &outputFile)
 {
-    if (t == nullptr)
-    {
-        return;
-    }
-    printInOrder(t->left, outputFile);
+  if(!(t == nullptr)){
+    printBinaryTreePosOrdem(t->left, outputFile); 
+    printBinaryTreePosOrdem(t->right, outputFile); 
     outputFile<< t->data.first << " " ;
-    printInOrder(t->right, outputFile);
+  }
 }
 void AVLTree::printAVLLevels(TreeAVL *t)
 {

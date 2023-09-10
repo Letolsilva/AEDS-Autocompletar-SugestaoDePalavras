@@ -192,53 +192,75 @@ Se a palavra não existe no texto ou tem uma contagem zero, a função não cria
 
 - `headerOutput:` é responsável por criar um cabeçalho formatado em um arquivo de saída, utilizado para registrar informações sobre a frequência de palavras em vários arquivos de texto. 
 
-- `CreatTree e insertTree:` A `creatTree` tem como objetivo criar uma árvore binária de busca a partir de do heap (vectorBasicTree). Ela inicializa um ponteiro para o nó raiz como nulo, percorre o vetor de pares e insere cada par na árvore por meio da função insertTree da instância arvore. A função `insertTree` faz parte de uma classe chamada basicTree e é responsável por inserir um nó em uma árvore binária de busca de acordo com a regra de ordenação baseada na frequência da palavra. Se o nó atual for nulo, um novo nó é criado com os dados da palavra e inserido ali. Caso contrário, a função compara a frequência da palavra com a do nó atual e a insere na subárvore esquerda se for menor/igual ou na subárvore direita se for maior. Isso mantém a árvore organizada pela frequência das palavras. Em seguida imprime uma árvore binária de busca a partir dos dados fornecidos no vetor, registrando-a em um arquivo de saída em inordem.
+- `CreatTree e insertTree:` A `creatTree` tem como objetivo criar uma árvore binária de busca a partir de do heap (vectorBasicTree). Ela inicializa um ponteiro para o nó raiz como nulo, percorre o vetor de pares e insere cada par na árvore por meio da função insertTree da instância arvore. A função `insertTree` faz parte de uma classe chamada basicTree e é responsável por inserir um nó em uma árvore binária de busca de acordo com a regra de ordenação baseada na frequência da palavra. Se o nó atual for nulo, um novo nó é criado com os dados da palavra e inserido ali. Caso contrário, a função compara a frequência da palavra com a do nó atual e a insere na subárvore esquerda se for menor/igual ou na subárvore direita se for maior. Isso mantém a árvore organizada pela frequência das palavras. Em seguida imprime uma árvore binária de busca a partir dos dados fornecidos no vetor, registrando-a em um arquivo de saída em Posordem.
 
 - `CreatAVL e insertAVL:` CreatAVL é responsável por criar uma Árvore AVL (Árvore de Busca Binária Equilibrada) a partir do heap (vectorAVLTree). Ela começa declarando um ponteiro root para a raiz da árvore AVL como nulo. Em seguida, ela itera através do vetor e insere cada par na árvore AVL por meio da função insertAVL da instância arvoreAVL. `insertAVL` é utilizada para inserir um novo nó em uma Árvore AVL de acordo com a frequência associada à palavra. O código inicia verificando se o nó atual (*t) é nulo. Se for nulo, um novo nó é criado com os dados da palavra e os ponteiros left e right são inicializados como nulos. Além disso, o campo weight do nó é definido como 0. Se o nó não for nulo, a função compara a frequência da palavra com a do nó atual e insere a palavra na subárvore esquerda ou direita, dependendo da comparação. Após a inserção, a função verifica se o fator de equilíbrio da árvore foi violado e, se necessário, realiza rotações para restaurar o equilíbrio da árvore. Finalmente, o campo weight do nó é atualizado para refletir a altura da subárvore enraizada no nó atual. Esta funçao utiliza de verias funções como `rotacaoSimplesDireita`, `rotacaoSimplesEsquerda`, `rotacaoDuplaDireita` e `rotacaoDuplaEsquerda` para manter a árvore balanceada. Essas funções são chamadas quando ocorrem violações do fator de equilíbrio da árvore durante a inserção de um novo nó. Além das funçoes `getWeight` e ` getMaxWeight` que auxiliam no cálculo e na atualização das alturas das subárvores em uma árvore AVL. Após a construção da árvore AVL, a função escreve uma mensagem indicando a criação da árvore no arquivo de saída.
 
 - `CreatHuffman, HuffmanCodes, generateHuffmanTree e printCodes:` A função CreatHuffman é usada para criar uma árvore de Huffman a partir do vetor heap(vectorHuffmanTree) e registrá-la em um arquivo de saída. Primeiro, a função determina o tamanho do vetor vectorHuffmanTree e cria dois arrays: um para armazenar as palavras (word) e outro para armazenar as frequências (freq). Em seguida, ela copia os valores das palavras e frequências do vetor vectorHuffmanTree para esses arrays. Logo, após a função HuffmanCodes da instância arvoreHuffman é chamada para construir a árvore de Huffman. A função `HuffmanCodes` pertence à classe HuffmanTree e é responsável por gerar códigos de Huffman para um conjunto de palavras com base em suas frequências e registrá-los em um arquivo de saída. Ela inicia criando uma fila de prioridade (priority_queue) de nós Huffman, onde cada nó representa uma palavra e sua frequência. Em seguida, percorre o conjunto de palavras e suas frequências, criando um nó Huffman para cada palavra e inserindo-o na fila de prioridade. Depois, a função chama outra função chamada `generateHuffmanTree` para construir a árvore de Huffman a partir dos nós na fila de prioridade. Ela opera em um loop até que reste apenas um nó na fila, o qual se tornará a raiz da árvore de Huffman. A cada iteração, ela remove os dois nós de maior prioridade (menor frequência) da fila, que representam as palavras menos frequentes. Em seguida, cria um novo nó combinado que não tem uma palavra associada, mas possui a soma das frequências dos nós removidos. Esse novo nó tem os nós removidos como filhos (esquerdo e direito) e é inserido de volta na fila de prioridade. O processo continua até que reste apenas um nó na fila, que representa a raiz da árvore de Huffman completa. Uma vez que a árvore é construída, a função chama `printCodes` para gerar os códigos de Huffman para as palavras e registrá-los no arquivo de saída. Esses códigos são usados para representar as palavras de forma mais eficiente, onde palavras mais frequentes recebem códigos mais curtos. Posteriormente, a função `CreatHuffman` escreve uma mensagem indicando a criação da árvore de Huffman no arquivo de saída.
 
-- `printInOrder:` Esta função imprime as árvores no formato inordem. No arquivo de saída, todas as árvores foram impressas nessa ordem, organizadas de acordo com sua frequência, sendo que apenas a árvore de Huffman foi impressa inordem de acordo com seus códigos.
+- `printPosOrder:` Esta função imprime as árvores no formato Posordem. No arquivo de saída, todas as árvores foram impressas nessa ordem, organizadas de acordo com sua frequência.
 
 - `print(nome da arvore)Levels:` Essa função tem o objetivo de imprimir a árvore em níveis, permitindo a verificação da sua estrutura para garantir sua correção. Embora não seja utilizada no código principal, ela pode ser chamada a qualquer momento para analisar a organização da árvore.
 ## 🎯Resultados
 
-<h3><b>Configurando</b></h3>
+Para analise dos resultados, iremos pegar a palavra da lista "assim" e analisar ela no texto 6, no qual ela apareceu 201 vezes.
+
+Primeiramente vamos configurar na main, para seis arquivos e o nosso K valendo 20.
 <div align="center">
-<img src="https://github.com/Letolsilva/AEDS---Caminho-guloso/assets/109817570/208e52e6-f803-4895-a435-490c49f9fe97" width="500px" />
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/345e826c-c91c-4ca3-9b98-480c35ed2d31" width="500px" />
 </div>
 
-Configurando para ler apenas um arquivo usando a variável ```numFiles``` e a variável  ```k``` para selecionar os top 20 elementos, no arquivo `main.cpp`.
-
-<h3><b>Entrada</b></h3>
+<h3><b>Top K+1 palavras do texto 6</b></h3>
 <div align="center">
-<img src="https://github.com/Letolsilva/Labirinto-Recorrente/assets/109817570/e4995ae5-f616-4b05-8822-e7c571db83ca" width="500px" />
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/0942937c-7305-4ce3-a11e-455d99d1520a" width="300px" />
 </div>
 
-<h3><b>Saída</b></h3>
+Após processarmos o heap para verificar as palavra "assim", obtemos o seguinte novo heap:
+
+<h3><b>Heap usado para a criação das árvores</b></h3>
 <div align="center">
-<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/767c2b1d-6584-4067-ae34-be9486b21c44" width="300px" />
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/c31daba0-9fb3-4f83-8961-8ea53ae10e82" width="300px" />
 </div>
 
-<h3><b>Saída com os dois textos fornecidos como testes</b></h3>
+Já sabemos que esta palavra se encontra no texto seis e também aparece no seu heap, portanto essa palavra não será considerada nas contruções das árvores.
+
+As imagens a seguir vão ser as saídas printadas por niveis no terminal, para analisarmos se a contrução da arvore esta correta.
+
+<h3><b>Saída árvore binária por níveis:</b></h3>
 <div align="center">
-<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/dd912173-40ca-4650-a581-82cb62b66faf" width="300px" />
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/54478e26-7d1f-4c35-ba6a-c2a296fb57fa" width="500px" />
 </div>
-A saída obtida é resultado da fusão das palavras mais comuns encontradas nos textos "Dom Casmurro" e "A semana Texto-fonte: Obra Completa de Machado de Assis", ambos fornecidos como entradas de teste pelo professor e presentes nos arquivos "input1.txt" e "input2.txt", localizados na pasta data deste código.<br>
 
-Pode-se confirmar que as sáidas estão corretas analisando os filhos esquerdos e direitos, com 2 * i + 1 e 2 * i + 2.<br>
-Obs: Novamente i recebeu o nome de subtree_root_index neste codigo.
+<h3><b>Saída árvore AVL por níveis:</b></h3>
+<div align="center">
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/ddc8557a-70d2-48ce-8e61-2af76df9c3c6" width="500px" />
+</div>
 
+<h3><b>Saída árvore Huffman por níveis:</b></h3>
+<div align="center">
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/734ef14b-40a8-43a3-bea2-5eaf6654e930" width="600px" />
+</div>
+
+As saídas por níveis fornecidas são úteis para visualizar e validar as estruturas das árvores criadas no programa. 
+
+Após a criação das árvores, elas foram registradas em um arquivo chamado "output.txt" e impressas na forma Posordem. Como exemplo, a saída da palavra "assim" do texto 6 ficou da seguinte forma:
+<h3><b>Saída no output:</b></h3>
+<div align="center">
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/383d99b7-b134-4a1c-a193-6e04e0145f1f" width="700px" />
+</div>
+Todo o output segue um padrão consistente, onde são apresentados o texto ao qual a palavra pertence, a própria palavra da lista e sua frequência. Logo abaixo, são impressas as três árvores exibidas na forma Posordem. No entanto, pode-se observar que o vetor nem sempre é o mesmo, devido à existência de palavras com frequências iguais. Isso faz com que, dependendo da posição dessas palavras na árvore, elas apareçam em posições diferentes no vetor. No entanto, o critério geral de impressão Posordem é seguido, mantendo a consistência. Esse método de impressão foi escolhido porque na árvore de Huffman as palavras são impressas seguindo este criterio, e para manter a lógica, as outras árvores também seguem este padrão.
 
 <h3><b>Tempo de execução</b></h3>
 O código foi executado em um notebook Acer Nitro 5 com processador Ryzen 7.
 <div align="center">
-<img src="https://github.com/Letolsilva/AEDS---Caminho-guloso/assets/109817570/5bc326ce-66a9-4398-a6f3-d6345201b159" width="200px" />
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/24c99777-6a53-4973-a487-e85be4b3ae61" width="200px" />
 </div>
 
-
 ## ✔️Conclusão
-Conheci um método otimizado para busca e pesquisa em textos, com aplicações potenciais em várias outras situações. Ao compreender o conceito de heap e suas interações com estruturas abstratas de dados, pude estabelecer uma hierarquia em árvore para os elementos armazenados, permitindo um acesso eficiente a eles. Além disso, aprendi mais sobre estruturas de árvores e apliquei esses conhecimentos no algoritmo. Descobri também novas funções e estruturas que contribuiu para este código, possibilitando a execução de tarefas já conhecidas e abordadas mas desta vez de forma mais avançada.
+Cada uma dessas estruturas de dados possui características distintas que podem ser mais adequadas para diferentes cenários. 
+Como a Árvore Binária Padrão, que foi simples de implementar, fácil de entender e útil para várias operações de pesquisa, porém não ŕ eficiente para algumas operações em texto, como busca de palavras frequentes, devido à falta de balanceamento automático. A Árvore AVL, manteve o balanceamento automático, garantindo tempos de pesquisa razoáveis, mesmo em grandes conjuntos de dados. No entanto, é mais complexa que a arvore binaria padrao, mas no meu ponto de vista em quatao de complexidade de tempo e espaço, ela seria uma boa escolha para a implementação deste codigo, pois a árvore AVL é uma escolha sólida quando a eficiência da pesquisa é crítica, especialmente em cenários com textos grandes e muitas operações de busca. E por ultimo a Árvore de Huffman, deal para compactação de texto, gerando códigos binários eficientes para palavras com base em suas frequências, aparenta se encaixar perfeitamente na demanda desta implementação, porém não é adequada para pesquisa de palavras individuais em um texto, pois não foi projetada para essa finalidade.
+Vale ressaltar que houve uma tentativa de cronometrar o tempo de execução da construção de cada árvore, todas elas apresentaram um tempo de execução muito rápido, indicando eficiência no processamento e construção das estruturas.
+
 
 ## 🚨Importante
 
