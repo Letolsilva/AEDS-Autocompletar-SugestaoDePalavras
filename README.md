@@ -21,12 +21,19 @@ O propósito fundamental deste projeto é desenvolver e implementar estruturas d
 
 <strong><h4>Condições impostas: </h4></strong>
 - Inicialmente, este código realiza a leitura de um arquivo de entrada denominado ```data/input(x).txt```. O arquivo contém o texto que será submetido à análise. No contexto, o valor de x é o valor de uma variável ajustável no início do arquivo ```main```, denominada numFiles. Para este código em particular, numFiles é igual a 6. Lembrando que ```data``` é a pasta criada para os arquivos de entrada.
+>O professor forneceu seis textos, cujos nomes foram modificados para se adaptarem ao código, seguindo a regra do formato "data/input(x).txt". Eles foram numerados na ordem em que foram apresentados, e o mesmo padrão foi aplicado na escrita dentro do arquivo output, com o nome "arquivo x", seguindo a mesma numeração do input. Abaixo está a relação dos textos e seus respectivos nomes no formato "input(x).txt" e "arquivo x":<br>
+>filosofia.txt -> input1.txt -> arquivo 1<br>
+>filosofia2.txt -> input2.txt -> arquivo 2<br>
+>globalizacao.txt -> input3.txt -> arquivo 3<br>
+>politica.txt -> input4.txt -> arquivo 4<br>
+>ti.txt -> input5.txt -> arquivo 5<br>
+>ti2.txt -> input6.txt -> arquivo 6
 
 - Para usar o sistema, o usuário deve adicionar um arquivo à pasta "data" chamado `input.data`, que contém uma lista de palavras. Cada palavra neste arquivo será tratada como um termo de pesquisa para o sistema, com uma palavra por linha.
 
 - Existe um arquivo de ```stop words``` para análise. Sendo as stop words artigos e conjunções que podem ser alteradas de acordo com a preferência do usuário. As palavras presentes neste arquivo serão desconsideradas da contagem das top k palavras.
 
-- Após a conclusão do processo, um arquivo denominado output.txt será automaticamente gerado para apresentar informações de saída de maneira organizada. Este arquivo incluirá o nome do arquivo que está sendo lido, a palavra pesquisada e sua frequência. Além disso, haverá uma representação em ordem das três árvores com base na frequência, bem como a árvore de Huffman de acordo com o código gerado.
+- Após a conclusão do processo, um arquivo denominado output.txt será automaticamente gerado para apresentar informações de saída de maneira organizada. Este arquivo incluirá o nome do arquivo que está sendo lido, da forma "Arquivo x", a palavra pesquisada e sua frequência. Além disso, haverá uma representação em ordem das três árvores com base na frequência, bem como a árvore de Huffman de acordo com o código gerado, em PosOrdem.
 
 - Foi visto como melhor o programa seguir o padrão de abrir um arquivo, procurar todas as palavras da lista dentro dele e, em seguida, passar para o próximo. Na saída, esse padrão será seguido. Quando uma palavra da lista não estiver presente no texto, o arquivo de saída registrará a mensagem "(palavra) não encontrada no texto x" para fornecer informações claras sobre o resultado da pesquisa.
 
@@ -127,23 +134,25 @@ Se a palavra não existe no texto ou tem uma contagem zero, a função não cria
 
 - `headerOutput:` é responsável por criar um cabeçalho formatado em um arquivo de saída, utilizado para registrar informações sobre a frequência de palavras em vários arquivos de texto. 
 
-- `CreatTree e insertTree:` A `creatTree` tem como objetivo criar uma árvore binária de busca a partir de do heap (vectorBasicTree). Ela inicializa um ponteiro para o nó raiz como nulo, percorre o vetor de pares e insere cada par na árvore por meio da função insertTree da instância arvore. A função `insertTree` faz parte de uma classe chamada basicTree e é responsável por inserir um nó em uma árvore binária de busca de acordo com a regra de ordenação baseada na frequência da palavra. Se o nó atual for nulo, um novo nó é criado com os dados da palavra e inserido ali. Caso contrário, a função compara a frequência da palavra com a do nó atual e a insere na subárvore esquerda se for menor/igual ou na subárvore direita se for maior. Isso mantém a árvore organizada pela frequência das palavras. Em seguida imprime uma árvore binária de busca a partir dos dados fornecidos no vetor, registrando-a em um arquivo de saída em Posordem.
+- `CreatTree e insertTree:` A `creatTree` tem como objetivo criar uma árvore binária de busca a partir de do heap com as top K palavras. Ela inicializa um ponteiro para o nó raiz como nulo, percorre o vetor de pares e insere cada par na árvore por meio da função insertTree da instância arvore. A função `insertTree` faz parte de uma classe chamada basicTree e é responsável por inserir um nó em uma árvore binária de busca de acordo com a regra de ordenação baseada na frequência da palavra. Se o nó atual for nulo, um novo nó é criado com os dados da palavra e inserido ali. Caso contrário, a função compara a frequência da palavra com a do nó atual e a insere na subárvore esquerda se for menor/igual ou na subárvore direita se for maior. Isso mantém a árvore organizada pela frequência das palavras. Em seguida imprime uma árvore binária de busca a partir dos dados fornecidos no vetor, registrando-a em um arquivo de saída em Posordem.
 
-- `CreatAVL e insertAVL:` CreatAVL é responsável por criar uma Árvore AVL (Árvore de Busca Binária Equilibrada) a partir do heap (vectorAVLTree). Ela começa declarando um ponteiro root para a raiz da árvore AVL como nulo. Em seguida, ela itera através do vetor e insere cada par na árvore AVL por meio da função insertAVL da instância arvoreAVL. `insertAVL` é utilizada para inserir um novo nó em uma Árvore AVL de acordo com a frequência associada à palavra. O código inicia verificando se o nó atual (*t) é nulo. Se for nulo, um novo nó é criado com os dados da palavra e os ponteiros left e right são inicializados como nulos. Além disso, o campo weight do nó é definido como 0. Se o nó não for nulo, a função compara a frequência da palavra com a do nó atual e insere a palavra na subárvore esquerda ou direita, dependendo da comparação. Após a inserção, a função verifica se o fator de equilíbrio da árvore foi violado e, se necessário, realiza rotações para restaurar o equilíbrio da árvore. Finalmente, o campo weight do nó é atualizado para refletir a altura da subárvore enraizada no nó atual. Esta funçao utiliza de verias funções como `rotacaoSimplesDireita`, `rotacaoSimplesEsquerda`, `rotacaoDuplaDireita` e `rotacaoDuplaEsquerda` para manter a árvore balanceada. Essas funções são chamadas quando ocorrem violações do fator de equilíbrio da árvore durante a inserção de um novo nó. Além das funçoes `getWeight` e ` getMaxWeight` que auxiliam no cálculo e na atualização das alturas das subárvores em uma árvore AVL. Após a construção da árvore AVL, a função escreve uma mensagem indicando a criação da árvore no arquivo de saída.
+- `CreatAVL e insertAVL:` CreatAVL é responsável por criar uma Árvore AVL (Árvore de Busca Binária Equilibrada) a partir do heap utilizado no trabalho anterior para capturar as top K palavras. Ela começa declarando um ponteiro root para a raiz da árvore AVL como nulo. Em seguida, ela itera através do vetor e insere cada par na árvore AVL por meio da função insertAVL da instância arvoreAVL. `insertAVL` é utilizada para inserir um novo nó em uma Árvore AVL de acordo com a frequência associada à palavra. O código inicia verificando se o nó atual (*t) é nulo. Se for nulo, um novo nó é criado com os dados da palavra e os ponteiros left e right são inicializados como nulos. Além disso, o campo weight do nó é definido como 0. Se o nó não for nulo, a função compara a frequência da palavra com a do nó atual e insere a palavra na subárvore esquerda ou direita, dependendo da comparação. Após a inserção, a função verifica se o fator de equilíbrio da árvore foi violado e, se necessário, realiza rotações para restaurar o equilíbrio da árvore. Finalmente, o campo weight do nó é atualizado para refletir a altura da subárvore enraizada no nó atual. Esta funçao utiliza de varias funções como `rotacaoSimplesDireita`, `rotacaoSimplesEsquerda`, `rotacaoDuplaDireita` e `rotacaoDuplaEsquerda` para manter a árvore balanceada. Essas funções são chamadas quando ocorrem violações do fator de equilíbrio da árvore durante a inserção de um novo nó. Além das funçoes `getWeight` e ` getMaxWeight` que auxiliam no cálculo e na atualização das alturas das subárvores em uma árvore AVL. Após a construção da árvore AVL, a função escreve uma mensagem indicando a criação da árvore no arquivo de saída.
 
-- `CreatHuffman, HuffmanCodes, generateHuffmanTree e printCodes:` A função CreatHuffman é usada para criar uma árvore de Huffman a partir do vetor heap(vectorHuffmanTree) e registrá-la em um arquivo de saída. Primeiro, a função determina o tamanho do vetor vectorHuffmanTree e cria dois arrays: um para armazenar as palavras (word) e outro para armazenar as frequências (freq). Em seguida, ela copia os valores das palavras e frequências do vetor vectorHuffmanTree para esses arrays. Logo, após a função HuffmanCodes da instância arvoreHuffman é chamada para construir a árvore de Huffman. A função `HuffmanCodes` pertence à classe HuffmanTree e é responsável por gerar códigos de Huffman para um conjunto de palavras com base em suas frequências e registrá-los em um arquivo de saída. Ela inicia criando uma fila de prioridade (priority_queue) de nós Huffman, onde cada nó representa uma palavra e sua frequência. Em seguida, percorre o conjunto de palavras e suas frequências, criando um nó Huffman para cada palavra e inserindo-o na fila de prioridade. Depois, a função chama outra função chamada `generateHuffmanTree` para construir a árvore de Huffman a partir dos nós na fila de prioridade. Ela opera em um loop até que reste apenas um nó na fila, o qual se tornará a raiz da árvore de Huffman. A cada iteração, ela remove os dois nós de maior prioridade (menor frequência) da fila, que representam as palavras menos frequentes. Em seguida, cria um novo nó combinado que não tem uma palavra associada, mas possui a soma das frequências dos nós removidos. Esse novo nó tem os nós removidos como filhos (esquerdo e direito) e é inserido de volta na fila de prioridade. O processo continua até que reste apenas um nó na fila, que representa a raiz da árvore de Huffman completa. Uma vez que a árvore é construída, a função chama `printCodes` para gerar os códigos de Huffman para as palavras e registrá-los no arquivo de saída. Esses códigos são usados para representar as palavras de forma mais eficiente, onde palavras mais frequentes recebem códigos mais curtos. Posteriormente, a função `CreatHuffman` escreve uma mensagem indicando a criação da árvore de Huffman no arquivo de saída.
+- `CreatHuffman, HuffmanCodes, generateHuffmanTree e printCodes:` A função CreatHuffman é usada para criar uma árvore de Huffman a partir do vetor heap e registrá-la em um arquivo de saída. Primeiro, a função determina o tamanho do vetor vectorHuffmanTree e cria dois arrays: um para armazenar as palavras (word) e outro para armazenar as frequências (freq). Em seguida, ela copia os valores das palavras e frequências do vetor vectorHuffmanTree para esses arrays. Logo, após a função HuffmanCodes da instância arvoreHuffman é chamada para construir a árvore de Huffman. A função `HuffmanCodes` pertence à classe HuffmanTree e é responsável por gerar códigos de Huffman para um conjunto de palavras com base em suas frequências e registrá-los em um arquivo de saída. Ela inicia criando uma fila de prioridade (priority_queue) de nós Huffman, onde cada nó representa uma palavra e sua frequência. Em seguida, percorre o conjunto de palavras e suas frequências, criando um nó Huffman para cada palavra e inserindo-o na fila de prioridade. Depois, a função chama outra função chamada `generateHuffmanTree` para construir a árvore de Huffman a partir dos nós na fila de prioridade. Ela opera em um loop até que reste apenas um nó na fila, o qual se tornará a raiz da árvore de Huffman. A cada iteração, ela remove os dois nós de maior prioridade (menor frequência) da fila, que representam as palavras menos frequentes. Em seguida, cria um novo nó combinado que não tem uma palavra associada, mas possui a soma das frequências dos nós removidos. Esse novo nó tem os nós removidos como filhos (esquerdo e direito) e é inserido de volta na fila de prioridade. O processo continua até que reste apenas um nó na fila, que representa a raiz da árvore de Huffman completa. Uma vez que a árvore é construída, a função chama `printCodes` para gerar os códigos de Huffman para as palavras e registrá-los no arquivo de saída. Esses códigos são usados para representar as palavras de forma mais eficiente, onde palavras mais frequentes recebem códigos mais curtos. Posteriormente, a função `CreatHuffman` escreve uma mensagem indicando a criação da árvore de Huffman no arquivo de saída.
 
 - `printPosOrder:` Esta função imprime as árvores no formato Posordem. No arquivo de saída, todas as árvores foram impressas nessa ordem, organizadas de acordo com sua frequência.
 
 - `print(nome da arvore)Levels:` Essa função tem o objetivo de imprimir a árvore em níveis, permitindo a verificação da sua estrutura para garantir sua correção. Embora não seja utilizada no código principal, ela pode ser chamada a qualquer momento para analisar a organização da árvore.
 ## 🎯Resultados
 
-Para analise dos resultados, iremos pegar a palavra da lista "assim" e analisar ela no texto 6, no qual ela apareceu 201 vezes.
+Este código foi testado com 12 palavras na lista (input.txt) e 6 textos. Para analise dos resultados, iremos pegar a palavra da lista "assim" e analisar ela no texto 6, no qual ela apareceu 201 vezes.
 
 Primeiramente vamos configurar na main, para seis arquivos e o nosso K valendo 20.
 <div align="center">
 <img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/345e826c-c91c-4ca3-9b98-480c35ed2d31" width="500px" />
 </div>
+
+Inicialmente, o nosso heap terá k+1 palavras para passar pelo processo de verificação já mencionado nas funções acima. Basicamente, esse processo consiste em verificar se a palavra existe no texto e se está dentro do heap, e as modificações necessárias serão feitas.
 
 <h3><b>Top K+1 palavras do texto 6</b></h3>
 <div align="center">
@@ -159,7 +168,7 @@ Após processarmos o heap para verificar as palavra "assim", obtemos o seguinte 
 
 Já sabemos que esta palavra se encontra no texto seis e também aparece no seu heap, portanto essa palavra não será considerada nas contruções das árvores.
 
-As imagens a seguir vão ser as saídas printadas por niveis no terminal, para analisarmos se a contrução da arvore esta correta.
+As imagens a seguir vão ser as saídas printadas por níveis no terminal, para analisarmos se a contrução da árvore esta correta e análise do tempo da construção de cada árvore.
 
 <h3><b>Saída árvore binária por níveis:</b></h3>
 <div align="center">
@@ -168,7 +177,7 @@ As imagens a seguir vão ser as saídas printadas por niveis no terminal, para a
 
 <h3><b>Saída árvore AVL por níveis:</b></h3>
 <div align="center">
-<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/110b1473-8012-4279-a23e-5ec7dcce58a8" width="500px" />
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/110b1473-8012-4279-a23e-5ec7dcce58a8" width="600px" />
 </div>
 
 <h3><b>Saída árvore Huffman por níveis:</b></h3>
@@ -181,14 +190,14 @@ As saídas por níveis fornecidas são úteis para visualizar e validar as estru
 Após a criação das árvores, elas foram registradas em um arquivo chamado "output.txt" e impressas na forma Posordem. Como exemplo, a saída da palavra "assim" do texto 6 ficou da seguinte forma:
 <h3><b>Saída no output:</b></h3>
 <div align="center">
-<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/191fccc5-62fd-4289-a218-8b5fe1caf26f" width="800px" />
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/8a237244-d661-4ae8-a57a-c8301989c56a" width="800px" />
 </div>
-Todo o output segue um padrão consistente, onde são apresentados o texto ao qual a palavra pertence, a própria palavra da lista e sua frequência. Logo abaixo, são impressas as três árvores exibidas na forma Posordem. No entanto, pode-se observar que o vetor nem sempre é o mesmo, devido à existência de palavras com frequências iguais. Isso faz com que, dependendo da posição dessas palavras na árvore, elas apareçam em posições diferentes no vetor. No entanto, o critério geral de impressão Posordem é seguido, mantendo a consistência. Esse método de impressão foi escolhido porque na árvore de Huffman as palavras são impressas seguindo este criterio, e para manter a lógica, as outras árvores também seguem este padrão.
+Todo o output segue um padrão consistente, onde são apresentados o texto ao qual a palavra pertence, a própria palavra da lista e sua frequência. Logo abaixo, são impressas as três árvores exibidas na forma Posordem. Esse método de impressão foi escolhido porque na árvore de Huffman as palavras são impressas seguindo este criterio, e para manter a lógica, as outras árvores também seguem este padrão.
 
 <h3><b>Tempo de execução</b></h3>
 O código foi executado em um notebook Acer Nitro 5 com processador Ryzen 7.
 <div align="center">
-<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/24c99777-6a53-4973-a487-e85be4b3ae61" width="200px" />
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/24c99777-6a53-4973-a487-e85be4b3ae61" width="300px" />
 </div>
 
 ## ✔️Conclusão
@@ -208,7 +217,7 @@ Vale ressaltar que, ao tentar cronometrar o tempo de execução da construção 
 
 - Certifique-se de ter os textos desejados armazenados na pasta data, nomeados como input(número do arquivo).txt, sendo que o número do arquivo deve começar a partir de 1 e incrementar sequencialmente. Na pasta main, escolha o número adequado de arquivos a serem lidos.
 
-- adicionar a lista de palavras que deseja pesquisar com o nome "input.txt".
+- Adicionar a lista de palavras que deseja pesquisar com o nome "input.txt".
 
 - O programa irá gerar um arquivo chamado "output.txt" dentro da pasta denominada "src", onde serão apresentadas as árvores criadas para as palavras.
 

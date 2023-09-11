@@ -24,7 +24,7 @@ void basicTree::printBinaryTreePosOrdem(TreeNode *root, std::ofstream &outputFil
   if(!(root == NULL)){
     printBinaryTreePosOrdem(root->left, outputFile); 
     printBinaryTreePosOrdem(root->right, outputFile); 
-    outputFile << root->data.first << " ";
+    outputFile << root->data.first << ":" << root->data.second << " ";
   }
 }
 

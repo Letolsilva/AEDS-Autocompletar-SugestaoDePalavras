@@ -122,7 +122,7 @@ void AVLTree::printBinaryTreePosOrdem(TreeAVL *t, std::ofstream &outputFile)
   if(!(t == nullptr)){
     printBinaryTreePosOrdem(t->left, outputFile); 
     printBinaryTreePosOrdem(t->right, outputFile); 
-    outputFile<< t->data.first << " " ;
+    outputFile<< t->data.first << ":" << t->data.second << " " ;
   }
 }
 void AVLTree::printAVLLevels(TreeAVL *t)
