@@ -228,22 +228,22 @@ void topKItems::VerificaArvoreECria(const std::string &listFilename, std::ofstre
         basicTree arvore;
         CreatTree(vectortopKHeapAux, outputFile, arvore);
         auto endBinary = std::chrono::high_resolution_clock::now();
-        auto durationBinary = std::chrono::duration_cast<std::chrono::milliseconds>(endBinary - startBinary);
-        std::cout << "Tempo de execução da arvore binaria: " << durationBinary.count() << " ms" << std::endl;
+        auto durationBinary = std::chrono::duration_cast<std::chrono::nanoseconds>(endBinary - startBinary);
+        //std::cout << "Tempo de execução da árvore binária: " << durationBinary.count() << " ns" << std::endl;
 
         auto startAVL = std::chrono::high_resolution_clock::now();
         AVLTree avlTree;
         CreatAVL(vectortopKHeapAux, avlTree, outputFile);
         auto endAVL = std::chrono::high_resolution_clock::now();
-        auto durationAVL = std::chrono::duration_cast<std::chrono::milliseconds>(endAVL - startAVL);
-        std::cout << "Tempo de execução da arvore AVL: " << durationAVL.count() << " ms" << std::endl;
+        auto durationAVL = std::chrono::duration_cast<std::chrono::nanoseconds>(endAVL - startAVL);
+        //std::cout << "Tempo de execução da árvore AVL: " << durationAVL.count() << " ns" << std::endl;
 
         auto startHuffman = std::chrono::high_resolution_clock::now();
         HuffmanTree huffmanTree;
         CreatHuffman(vectortopKHeapAux, k, huffmanTree, outputFile);
         auto endHuffman = std::chrono::high_resolution_clock::now();
-        auto durationHuffman = std::chrono::duration_cast<std::chrono::milliseconds>(endHuffman - startHuffman);
-        std::cout << "Tempo de execução da arvore Huffman: " << durationHuffman.count() << " ms" << std::endl;
+        auto durationHuffman = std::chrono::duration_cast<std::chrono::nanoseconds>(endHuffman - startHuffman);
+        //std::cout << "Tempo de execução da árvore Huffman: " << durationHuffman.count() << " ns" << std::endl;
 
 
         // std::cout << "\n";
@@ -279,7 +279,7 @@ void topKItems::CreatTree(std::vector<std::pair<std::string, int>> &vectorBasicT
     outputFile << "\n";
     // std::cout<<"Árvore binária: "<<std::endl;
     // arvore.printBinaryLevels(root);
-    //std::cout << std::endl;
+    // std::cout << std::endl;
 }
 
 void topKItems::CreatAVL(std::vector<std::pair<std::string, int>> &vectorAVLTree, AVLTree arvoreAVL, std::ofstream &outputFile)

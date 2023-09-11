@@ -11,6 +11,8 @@
 ## ✒️ Introdução
 <p align="justify">
 Este programa em C++ foi desenvolvido como parte do curso de Algoritmos e Estruturas de Dados I. Seu principal propósito é identificar os k elementos mais valiosos em um conjunto de dados e usar esses elementos para criar um sistema de autocompletar e sugestão de palavras para os usuários. Para atingir esse objetivo, utilizamos as estruturas de árvore binária, árvore AVL e árvore de Huffman, permitindo-nos comparar o desempenho dessas estruturas durante o desenvolvimento.
+Este código incorpora a implementação da atividade anterior de AEDS. Para obter mais detalhes sobre esta parte do código, você pode acessar o seguinte link: <a href="https://github.com/Letolsilva/Top-K-Elementos.git">Top K elementos no GitHub</a>
+
 </p>
 
 ## 💻 Objetivos
@@ -44,60 +46,8 @@ O propósito fundamental deste projeto é desenvolver e implementar estruturas d
 ## 🔨Resolução do problema
 
 Visando encontrar uma solução eficiente e rápida para resolução do problema, foram usadas as seguintes estruturas de dados:
-As mesmas estruturas utilizadas no trabalho de topKItems continuaram sendo usada para locaçizar as tops K palavras.
 
-<h3><b>Unodered_map</b></h3>
-
-`std:unordered_map` é um contêiner associativo que contém pares chave-valor com chaves exclusivas. Pesquisa, inserção e remoção de elementos têm complexidade de tempo constante média. Internamente, os elementos não são classificados em nenhuma ordem específica, mas organizados em baldes. Em qual balde um elemento é colocado depende inteiramente do hash de sua chave. Chaves com o mesmo código hash aparecem no mesmo bucket. Isso permite acesso rápido a elementos individuais, pois uma vez que o hash é calculado, ele se refere ao balde exato em que o elemento é colocado. Internamente unordered_map é implementado usando Hash Table, a chave fornecida para mapear é hash nos índices de uma tabela hash, e é por isso que o desempenho da estrutura de dados depende muito da função hash, nela se tem o Hashing que refere-se ao processo de gerar uma saída de tamanho fixo a partir de uma entrada de tamanho variável usando as fórmulas matemáticas conhecidas como funções de hash. Esta técnica determina um índice ou local para o armazenamento de um item em uma estrutura de dados.
-
-<div align="center">
-<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/baf62470-0a98-4279-98b2-541dfe83d17d" width="500px" />
-</div>
-
-<br>
-A interface engloba uma função bucket_count que opera em tempo constante. Além disso, apresenta outra função chamada bucket_size, cujo desempenho está linearmente relacionado ao tamanho do balde.
-
-Essencialmente, essas características descrevem a implementação do método de tratamento de colisões por encadeamento. Ao adotar o encadeamento de colisões, a satisfação de todos os requisitos torna-se uma tarefa relativamente fácil e direta. A função bucket_count() retorna o número de elementos presentes na estrutura de dados, enquanto a função bucket_size() retorna o número de elementos na lista de colisões associada a cada balde. A obtenção desses valores em tempo constante e linear, respectivamente, é uma operação simples e direta.
-
-Neste código emprega se uma tabela de hash para armazenar as palavras e suas frequencias, resultando em inserções e buscas rápidas com complexidade média de O(1). Isso é benéfico quando é crucial, pois torna possível utilizar palavras como chaves para contabilizar suas frequências e acessa-las para obter as top K elementos.
-
-
-<h3><b>Unodered_set</b></h3>
-
-`std::unordered_set` é um contêiner associativo que contém um conjunto de objetos exclusivos do tipo Key. Pesquisa, inserção e remoção têm complexidade de tempo constante média. Internamente, os elementos não são classificados em nenhuma ordem específica, mas organizados em baldes. Em qual balde um elemento é colocado depende inteiramente do hash de seu valor. Isso permite acesso rápido a elementos individuais, pois uma vez que um hash é calculado, ele se refere ao balde exato em que o elemento é colocado. O unordered_set é implementado como tabelas de hash.
-
-Os elementos do contêiner não podem ser modificados (mesmo por não const iteradores), pois a modificação pode alterar o hash de um elemento e corromper o contêiner. Portanto, optou-se por armazenar as stopWords, que foram carregadas de um arquivo de texto. Essa abordagem permite uma comparação otimizada para determinar se palavras são stopwords ou não. Isso se deve ao fato de que todas as operações no unordered_set têm uma complexidade de tempo constante em média (O(1)), embora em casos extremos possam chegar a uma complexidade de tempo linear (O(n)).
-
-<h3><b>Regex</b></h3>
-
-A biblioteca de expressões regulares disponibiliza uma classe que representa as próprias expressões regulares, que são uma forma de minilinguagem utilizada para realizar a correspondência de padrões em strings.
-
-Uma "expressão regular", também conhecida como `regex`, é uma sequência específica de caracteres que define um padrão de pesquisa. Isso pode ser empregado em algoritmos de busca, localização ou substituição de strings, entre outras aplicações. Expressões regulares também são utilizadas para validar entradas.
-
-No código, o regex foi empregado para preservar os caracteres que tenho interesse em que sejam reconhecidos nas palavras. 
-
-Os iteradores regex são usados ​​para percorrer todo o conjunto de correspondências de expressões regulares encontradas em uma sequência.
-O `std::regex_iterator` é um iterador somente leitura que permite acessar correspondências individuais de uma expressão regular dentro de uma sequência de caracteres. 
-
-Durante a construção e em cada incremento, esse iterador chama a função std::regex_search e armazena o resultado (ou seja, guarda uma cópia do valor de std::match_results < BidirIt >). O primeiro objeto desse tipo pode ser lido no momento da construção do iterador ou quando ocorre a primeira operação de desreferenciamento. Caso contrário, a desreferenciação apenas retorna uma cópia da correspondência de expressão regular mais recentemente obtida.
-
-O padrão utilizado na construção do std::regex_iterator representa o indicador do final da sequência. Quando um std::regex_iterator válido é incrementado após ter alcançado a última correspondência (ou seja, quando std::regex_search retorna false), ele se iguala ao iterador que denota o final da sequência.
-
-<h3><b>Heapify_min</b></h3>
-
-heapify_min foi implementado sem a utilização de estrutura pronta. 
-
-`Heapify` é um método de converter um conjunto de valores em um heap. A lógica por trás do algoritmo heapify determinará em que tipo de heap o conjunto de valores se tornará.
-
-Neste algoritmo foi utilizado o heapify_min, que é uma Árvore Binária Completa contendo o menor valor no nó raiz, seguido por valores maiores no próximo nível, seguido por valores ainda maiores no próximo nível e assim por diante. Assim, o último nível desta árvore binária deve conter os maiores valores presentes no array de valores que estamos inserindo. Neste código, um heap é utilizado para armazenar palavras e suas frequências dos K maiores elementos dos textos lidos. No entanto, é importante observar que, entre esses K maiores elementos, o menor deles é mantido no nó raiz.
-Imagine que o vetor contém as maiores frequências encontradas, o heap fica assim:
-<div align="center">
-<img src="https://github.com/Letolsilva/AEDS---Caminho-guloso/assets/109817570/de15ef20-39f3-4be0-8364-93eb9306bb63" width="500px" />
-</div>
-É possível acessar os filhos esquerdo e direito de um nó através das fórmulas 2 * i + 1 e 2 * i + 2, respectivamente.<br>
-Obs: "i" recebeu o nome de subtree_root_index neste código.
-
-Heapify um único nó leva complexidade de tempo O(log K), onde K é o número total de nós. Portanto, construir todo o Heap levará N operações de heapify e a complexidade de tempo total será O(N*log K).
+As mesmas estruturas utilizadas no trabalho de topKItems continuaram sendo usada para localizar as tops K palavras mais frequentes para esta atividade do autocompletar, você pode acessar pelo link:  <a href="https://github.com/Letolsilva/Top-K-Elementos.git">Top K elementos no GitHub</a>
 
 <h3><b>Árvore Binária</b></h3>
 
@@ -115,12 +65,12 @@ As imagens abaixo poderá ser observado a complexidade de tempo e espaço da ár
 
 <h4>Complexidade de tempo:<h4>
 <div align="center">
-<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/5764665c-0b57-4f70-ab4b-a1b667e98e7a" width="500px" />
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/5764665c-0b57-4f70-ab4b-a1b667e98e7a" width="600px" />
 </div>
 
 <h4>Complexidade de espaço:<h4>
 <div align="center">
-<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/d25f271e-c25d-402b-9b0e-351dfcc16c7f" width="500px" />
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/d25f271e-c25d-402b-9b0e-351dfcc16c7f" width="600px" />
 </div>
 
 <h3><b>Árvore AVL</b></h3>
@@ -136,7 +86,7 @@ Diz-se que a árvore está balanceada se o fator de equilíbrio de cada nó esti
 
 Uma árvore AVL é fornecida na figura a seguir. Podemos ver que o fator de equilíbrio associado a cada nó está entre -1 e +1. portanto, é um exemplo de árvore AVL.
 <div align="center">
-<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/2544b8e5-2203-445a-8a10-6fc6f597ccfa" width="500px" />
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/2544b8e5-2203-445a-8a10-6fc6f597ccfa" width="400px" />
 </div>
 Pode-se observar que os filhos da esquerda continuam sendo menores que seus pais e os filhos da direita maiores. No código da árvore AVL, foi uma decisão direcionar os filhos iguais para a direita, com o objetivo de obter resultados mais precisos e alinhados com as expectativas ao confirmá-los nos softwares de gerador de árvores AVL.
 
@@ -171,21 +121,6 @@ A extração da frequência mínima da fila de prioridade ocorre 2*(n-1)várias 
 
 ## 🔨 Funções 
 <div align="justify">
-
-- `init ` é responsável por iniciar o processo de processamento de um arquivo de texto, assim ela inicia abrindo o arquivo de entrada ```data/input(x).txt```, assegura-se de que a abertura tenha ocorrido sem problemas e, em seguida, aciona a função ```StopWords``` para carregar palavras que devem ser excluídas da contagem de frequência. Após essa etapa, ela procede à leitura de cada linha do arquivo de entrada e direciona cada linha para a função ```tokenizacao ```.
-
-- ```StopWords:``` Após abrir o arquivo e verificar a abertura bem-sucedida, ela lê cada linha do arquivo e converte cada palavra em minúsculas para garantir uniformidade. As palavras processadas dessa maneira são então inseridas em uma unodered_set chamada ```unorderedStopWords```, permitindo uma rápida verificação de pertencimento durante a  função tokenização. Ao final, o arquivo é fechado.
-
-- ```Tratamentos:``` Esta funçao realiza tratamentos especificos para caracteres especias encontrados durante os testes. Primeiramente, verifica se a palavra termina em hífen e remove-o. Em seguida, verifica se a palavra começa com hífen e, dependendo das circunstâncias, remove um ou dois hífens do início da palavra. Além disso, ela trata o caso em que as palavras possuem caracteres especiais " ” " e " “ " no final ou início, eliminando-os quando apropriado. A função também detecta se a palavra foi completamente esvaziada após essas operações de tratamento, indicando assim que a palavra não tem mais conteúdo significativo. Isso é útil para que a função de tokenização, pois esses tratamentos ajudam a normalizar as palavras, garantindo que a contagem de frequência seja precisa e livre de ruídos indesejados.
-
-- ```Tokenizacao:``` Essa função transforma as linhas do texto em palavras individuais. Para isso, ela aplica o regex para identificar padrões de palavras, incluindo letras, números, apóstrofos, caracteres acentuados e hifens. Durante o processo, a função itera através dos resultados obtidos pelo regex e aplica a funçao ```tratamentos```. Se a palavra resultante não estiver vazia após os tratamentos, ela é convertida para minúsculas e verifica-se se não é uma ```StopWords```. Caso não seja uma, ela é contabilizada no unordered_map chamado ```wordCount```, para posteriormente calcular a frequência das palavras no texto. 
-
-- ```topKWords:``` A função desempenha um papel central na identificação das palavras mais frequentes no texto, usando uma abordagem baseada em heap. Durante a iteração pelo mapa não ordenado chamado `wordCount`, que mantém as palavras e suas contagens, essa função constrói um heap. Durante a iteração, ele aumenta o tamanho da estrutura topKHeap. Se o tamanho ainda for menor ou igual a k, ele adiciona a entrada atual ao final do vetor vectortopKHeap. Então, ele chama uma função chamada heapify para reorganizar o heap de modo que ele mantenha as propriedades corretas. Se o tamanho da estrutura topKHeap exceder k, o código verifica se a contagem da palavra atual é maior que a contagem da palavra no topo do heap. Se sim, ele substitui a palavra no topo do heap com a palavra atual e chama heapify novamente para manter as propriedades do heap. <br>
-Ao final do processamento, o heap é montado de forma inicial, contendo os "k" elementos de maior contagem, permitindo identificar eficientemente as palavras mais frequentes no texto.
-
-- ```heapify:``` Ela recebe como entrada um vetor de pares representando palavras e suas contagens, o tamanho do heap (n) e o índice da raiz da subárvore sendo analisada. A função compara as contagens dos elementos presentes no índice da raiz e seus filhos esquerdo e direito, identificando o menor entre eles. Se o menor não for a raiz da subárvore, a função troca os elementos e chama recursivamente heapify na subárvore afetada, assegurando que a hierarquia e a propriedade de heap mínima sejam mantidas em toda a estrutura. 
-
-- ```printTopK:``` Imprime as palavras e suas frequências na ordem que esta no heap.
 
 - `VerificaArvoreECria:`A função recebe como entrada um arquivo contendo uma lista de palavras que o usuário deseja pesquisar em um texto. Para cada palavra lida, ela verifica se a palavra está presente no texto e se possui uma contagem positiva. Se a palavra existe e tem uma contagem positiva, a função a processa para atualizar uma estrutura de dados chamada "heap" que captura as k+1 palavras mais relevantes. Se a palavra da lista já está no heap, ela é excluída e o heap mantém apenas as k palavras mais relevantes. Se a palavra não está no heap, a palavra menos relevante (na posição 0) é excluída, mantendo o heap com k elementos.
 Se a palavra não existe no texto ou tem uma contagem zero, a função não cria uma estrutura de árvore para ela e passa para a próxima palavra. Além disso, a função cria três tipos diferentes de árvores (uma árvore básica, uma árvore AVL e uma árvore de Huffman) com base no heap e suas contagens e escreve informações formatadas em um arquivo de saída. 
@@ -228,17 +163,17 @@ As imagens a seguir vão ser as saídas printadas por niveis no terminal, para a
 
 <h3><b>Saída árvore binária por níveis:</b></h3>
 <div align="center">
-<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/54478e26-7d1f-4c35-ba6a-c2a296fb57fa" width="500px" />
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/9a246c6d-3516-4291-b162-64eb4635740f" width="500px" />
 </div>
 
 <h3><b>Saída árvore AVL por níveis:</b></h3>
 <div align="center">
-<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/ddc8557a-70d2-48ce-8e61-2af76df9c3c6" width="500px" />
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/110b1473-8012-4279-a23e-5ec7dcce58a8" width="500px" />
 </div>
 
 <h3><b>Saída árvore Huffman por níveis:</b></h3>
 <div align="center">
-<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/734ef14b-40a8-43a3-bea2-5eaf6654e930" width="600px" />
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/9b8a354d-4e3a-47ff-9051-1947a902579a" width="600px" />
 </div>
 
 As saídas por níveis fornecidas são úteis para visualizar e validar as estruturas das árvores criadas no programa. 
@@ -246,7 +181,7 @@ As saídas por níveis fornecidas são úteis para visualizar e validar as estru
 Após a criação das árvores, elas foram registradas em um arquivo chamado "output.txt" e impressas na forma Posordem. Como exemplo, a saída da palavra "assim" do texto 6 ficou da seguinte forma:
 <h3><b>Saída no output:</b></h3>
 <div align="center">
-<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/383d99b7-b134-4a1c-a193-6e04e0145f1f" width="700px" />
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/191fccc5-62fd-4289-a218-8b5fe1caf26f" width="800px" />
 </div>
 Todo o output segue um padrão consistente, onde são apresentados o texto ao qual a palavra pertence, a própria palavra da lista e sua frequência. Logo abaixo, são impressas as três árvores exibidas na forma Posordem. No entanto, pode-se observar que o vetor nem sempre é o mesmo, devido à existência de palavras com frequências iguais. Isso faz com que, dependendo da posição dessas palavras na árvore, elas apareçam em posições diferentes no vetor. No entanto, o critério geral de impressão Posordem é seguido, mantendo a consistência. Esse método de impressão foi escolhido porque na árvore de Huffman as palavras são impressas seguindo este criterio, e para manter a lógica, as outras árvores também seguem este padrão.
 
@@ -257,18 +192,25 @@ O código foi executado em um notebook Acer Nitro 5 com processador Ryzen 7.
 </div>
 
 ## ✔️Conclusão
-Cada uma dessas estruturas de dados possui características distintas que podem ser mais adequadas para diferentes cenários. 
-Como a Árvore Binária Padrão, que foi simples de implementar, fácil de entender e útil para várias operações de pesquisa, porém não ŕ eficiente para algumas operações em texto, como busca de palavras frequentes, devido à falta de balanceamento automático. A Árvore AVL, manteve o balanceamento automático, garantindo tempos de pesquisa razoáveis, mesmo em grandes conjuntos de dados. No entanto, é mais complexa que a arvore binaria padrao, mas no meu ponto de vista em quatao de complexidade de tempo e espaço, ela seria uma boa escolha para a implementação deste codigo, pois a árvore AVL é uma escolha sólida quando a eficiência da pesquisa é crítica, especialmente em cenários com textos grandes e muitas operações de busca. E por ultimo a Árvore de Huffman, deal para compactação de texto, gerando códigos binários eficientes para palavras com base em suas frequências, aparenta se encaixar perfeitamente na demanda desta implementação, porém não é adequada para pesquisa de palavras individuais em um texto, pois não foi projetada para essa finalidade.
-Vale ressaltar que houve uma tentativa de cronometrar o tempo de execução da construção de cada árvore, todas elas apresentaram um tempo de execução muito rápido, indicando eficiência no processamento e construção das estruturas.
+Cada uma dessas estruturas de dados possui características distintas que podem ser mais adequadas para diferentes cenários.
 
+A Árvore Binária Padrão, por exemplo, é simples de implementar, fácil de entender e útil para várias operações de pesquisa. No entanto, ela não é eficiente em algumas operações em texto, como a busca por palavras frequentes, devido à falta de balanceamento automático.
+
+A Árvore AVL, por outro lado, mantém o balanceamento automático, garantindo tempos de pesquisa razoáveis, mesmo em grandes conjuntos de dados. Embora seja mais complexa do que a árvore binária padrão, do meu ponto de vista, em termos de complexidade de tempo e espaço, a Árvore AVL seria uma excelente escolha para a implementação deste código. A Árvore AVL destaca-se quando a eficiência da pesquisa é crítica, especialmente em cenários que envolvem textos extensos e inúmeras operações de busca.
+
+Por último, a Árvore de Huffman é ideal para compactação de texto, gerando códigos binários eficientes para palavras com base em suas frequências, o que parece se encaixar perfeitamente na demanda desta implementação. No entanto, é importante notar que ela não é adequada para a pesquisa de palavras individuais em um texto, pois não foi projetada para essa finalidade.
+
+Vale ressaltar que, ao tentar cronometrar o tempo de execução da construção de cada árvore, todas elas apresentaram um tempo de execução muito rápido, indicando eficiência no processamento e construção das estruturas. porém em termos de complexidade de tempo, foi possível observar que a Árvore AVL demonstrou o melhor desempenho.
 
 ## 🚨Importante
 
-- Antes de compilar o código, é essencial definir dois parâmetros no arquivo main.cpp localizados no início do código: o valor de `k` (linha 12), que representa o tamanho do heap, e o número de arquivos que serão lidos numFiles (linha 8). 
+- Antes de compilar o código, é essencial definir dois parâmetros no arquivo main.cpp localizados no início do código: o valor de `k` (linha 10), que representa o tamanho do heap, e o número de arquivos que serão lidos numFiles (linha 9). 
 
 - Certifique-se de ter os textos desejados armazenados na pasta data, nomeados como input(número do arquivo).txt, sendo que o número do arquivo deve começar a partir de 1 e incrementar sequencialmente. Na pasta main, escolha o número adequado de arquivos a serem lidos.
 
-- O programa fornecerá uma única saída, apresentando as palavras mais frequentes encontradas nos arquivos especificados pelo parâmetro numFiles. Isso permitirá uma análise eficiente das palavras mais recorrentes nos textos fornecidos.
+- adicionar a lista de palavras que deseja pesquisar com o nome "input.txt".
+
+- O programa irá gerar um arquivo chamado "output.txt" dentro da pasta denominada "src", onde serão apresentadas as árvores criadas para as palavras.
 
 
 ## 👾Compilação e execução
@@ -285,6 +227,7 @@ Esse código possui um arquivo Makefile que realiza todo o procedimento de compi
 ## ✔️Referências
 https://www.javatpoint.com/binary-search-tree<br>
 https://www.javatpoint.com/avl-tree<br>
+https://www.programiz.com/dsa/huffman-coding
 
 ## Contato
 
