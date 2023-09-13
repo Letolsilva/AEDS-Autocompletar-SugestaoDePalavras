@@ -20,7 +20,7 @@ Este código incorpora a implementação da atividade anterior de AEDS. Para obt
 O propósito fundamental deste projeto é desenvolver e implementar estruturas de árvores com o objetivo de processar e analisar textos de forma eficiente. Essas estruturas de árvores desempenharão um papel crucial na manipulação de dados textuais, permitindo a busca, classificação, extração de informações relevantes e facilitando análises mais profundas dos conteúdos textuais. 
 
 <strong><h4>Condições impostas: </h4></strong>
-- Inicialmente, este código realiza a leitura de um arquivo de entrada denominado ```data/input(x).txt```. O arquivo contém o texto que será submetido à análise. No contexto, o valor de x é o valor de uma variável ajustável no início do arquivo ```main```, denominada numFiles. Para este código em particular, numFiles é igual a 6. Lembrando que ```data``` é a pasta criada para os arquivos de entrada.
+- Inicialmente, este código realiza a leitura de um arquivo de entrada denominado ```data/input(x).txt```. O arquivo contém o texto que será submetido à análise. No contexto, o valor de x é o valor de uma variável ajustável no início do arquivo ```main```, denominada numFiles. Para este código em particular, numFiles é igual a 6. ```data``` é a pasta criada para os arquivos de entrada.
 >O professor forneceu seis textos, cujos nomes foram modificados para se adaptarem ao código, seguindo a regra do formato "data/input(x).txt". Eles foram numerados na ordem em que foram apresentados, e o mesmo padrão foi aplicado na escrita dentro do arquivo output, com o nome "arquivo x", seguindo a mesma numeração do input. Abaixo está a relação dos textos e seus respectivos nomes no formato "input(x).txt" e "arquivo x":<br>
 >filosofia.txt -> input1.txt -> arquivo 1<br>
 >filosofia2.txt -> input2.txt -> arquivo 2<br>
@@ -117,7 +117,7 @@ Codificação Huffman é uma técnica de compactação de dados para reduzir seu
 
 Neste código, utilizamos as palavras e suas frequências para criar uma árvore. O processo de codificação de Huffman inicia-se com a construção de uma árvore com base nas frequências das palavras. Posteriormente, essa árvore é usada para gerar códigos individuais para cada palavra. A codificação de Huffman é gerada atribuindo "1" quando se move para a direita na árvore e "0" quando se move para a esquerda. Essa abordagem de codificação é usada para criar o código correspondente a cada palavra na árvore de Huffman.
 <div align="center">
-<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/27bb9e0f-0557-4851-b2da-8020be32f30f" width="500px" />
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/27bb9e0f-0557-4851-b2da-8020be32f30f" width="400px" />
 </div>
 
 Para decodificar o código, podemos pegar o código e percorrer a árvore para encontrar o caractere. Seja 101 para ser decodificado, podemos percorrer a partir da raiz como na figura abaixo.
@@ -199,6 +199,12 @@ O código foi executado em um notebook Acer Nitro 5 com processador Ryzen 7.
 <div align="center">
 <img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/24c99777-6a53-4973-a487-e85be4b3ae61" width="300px" />
 </div>
+<h4><b>Análise do comportamento do tempo da construção de cada árvore</b></h4>
+A imagem a seguir apresenta alguns dos tempo de construção das árvores, permitindo ter uma noção do tempo de cada árvore. O tempo registrado aqui é menor do que nas imagens anteriores, uma vez que não estamos imprimindo as árvores no terminal.
+<div align="center">
+<img src="https://github.com/Letolsilva/Top-K-Elementos/assets/109817570/bbdd2bdf-9b26-45a7-81f3-7933c51b6fa9" width="300px" />
+</div>
+
 
 ## ✔️Conclusão
 Cada uma dessas estruturas de dados possui características distintas que podem ser mais adequadas para diferentes cenários.
@@ -209,7 +215,7 @@ A Árvore AVL, por outro lado, mantém o balanceamento automático, garantindo t
 
 Por último, a Árvore de Huffman é ideal para compactação de texto, gerando códigos binários eficientes para palavras com base em suas frequências, o que parece se encaixar perfeitamente na demanda desta implementação. No entanto, é importante notar que ela não é adequada para a pesquisa de palavras individuais em um texto, pois não foi projetada para essa finalidade.
 
-Vale ressaltar que, ao tentar cronometrar o tempo de execução da construção de cada árvore, todas elas apresentaram um tempo de execução muito rápido, indicando eficiência no processamento e construção das estruturas. porém em termos de complexidade de tempo, foi possível observar que a Árvore AVL demonstrou o melhor desempenho.
+Vale ressaltar que, ao tentar cronometrar o tempo de execução da construção de cada árvore, todas elas apresentaram um tempo de execução muito rápido, inclusive a binária e a AVL que apresentaram tempos bem próximos, indicando eficiência no processamento e construção das estruturas. 
 
 ## 🚨Importante
 
