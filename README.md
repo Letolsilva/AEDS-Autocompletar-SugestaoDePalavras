@@ -225,7 +225,7 @@ Vale ressaltar que, ao tentar cronometrar o tempo de execução da construção 
 
 - Adicionar a lista de palavras que deseja pesquisar com o nome "input.txt".
 
-- O programa irá gerar um arquivo chamado "output.txt" dentro da pasta denominada "src", onde serão apresentadas as árvores criadas para as palavras.
+- O programa irá gerar um arquivo chamado "output.txt" fora das pastas, onde serão apresentadas as árvores criadas para as palavras.
 
 
 ## 👾Compilação e execução
