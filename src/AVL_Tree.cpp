@@ -2,10 +2,6 @@
 
 AVLTree::AVLTree() : root(nullptr) {}
 
-AVLTree::~AVLTree()
-{
-}
-
 int AVLTree::getWeight(TreeAVL **t)
 {
     if (*t == nullptr)
@@ -107,12 +103,6 @@ void AVLTree::insertAVL(TreeAVL **t, const std::pair<std::string, int> &AVL)
                 }
             }
         }
-        // std::cout << (*t)->weight << " "
-        //           << "ACABOU" << std::endl;
-        // std::cout << getWeight(&(*t)->right) << " "
-        //           << "DIREITA WEIGHT" << std::endl;
-        // std::cout << getWeight(&(*t)->left) << " "
-        //           << "ESQUERDA WEIGHT" << std::endl;
     }
     (*t)->weight = getMaxWeight(getWeight(&(*t)->left), getWeight(&(*t)->right)) + 1;
 }

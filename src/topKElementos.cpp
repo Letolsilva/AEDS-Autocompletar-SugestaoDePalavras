@@ -22,7 +22,7 @@ void topKItems::init(const std::string &filename)
     {
         tokenizacao(line);
     }
-    wordCountPorArquivo[filename] = wordCount; 
+    wordCountPorArquivo[filename] = wordCount;
     inputFile.close();
 }
 
@@ -142,7 +142,6 @@ void topKItems::topKWords(int k)
     {
         heapify(vectortopKHeap, k, i);
     }
-
 }
 
 void topKItems::printTopK(int k)
@@ -219,34 +218,34 @@ void topKItems::VerificaArvoreECria(const std::string &listFilename, std::ofstre
         }
         else
         {
-            outputFile<<"-------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<std::endl;
-            outputFile<< word << " não encontrada no texto "<< numFiles << std::endl;
+            outputFile << "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
+            outputFile << word << " não encontrada no texto " << numFiles << std::endl;
             continue;
         }
+
         headerOutput(outputFile, numFiles, word);
+
         auto startBinary = std::chrono::high_resolution_clock::now();
         basicTree arvore;
         CreatTree(vectortopKHeapAux, outputFile, arvore);
         auto endBinary = std::chrono::high_resolution_clock::now();
         auto durationBinary = std::chrono::duration_cast<std::chrono::nanoseconds>(endBinary - startBinary);
-        //std::cout << "Tempo de execução da árvore binária: " << durationBinary.count() << " ns" << std::endl;
+        // std::cout << "Tempo de execução da árvore binária: " << durationBinary.count() << " ns" << std::endl;
 
         auto startAVL = std::chrono::high_resolution_clock::now();
         AVLTree avlTree;
         CreatAVL(vectortopKHeapAux, avlTree, outputFile);
         auto endAVL = std::chrono::high_resolution_clock::now();
         auto durationAVL = std::chrono::duration_cast<std::chrono::nanoseconds>(endAVL - startAVL);
-        //std::cout << "Tempo de execução da árvore AVL: " << durationAVL.count() << " ns" << std::endl;
+        // std::cout << "Tempo de execução da árvore AVL: " << durationAVL.count() << " ns" << std::endl;
 
         auto startHuffman = std::chrono::high_resolution_clock::now();
         HuffmanTree huffmanTree;
         CreatHuffman(vectortopKHeapAux, k, huffmanTree, outputFile);
         auto endHuffman = std::chrono::high_resolution_clock::now();
         auto durationHuffman = std::chrono::duration_cast<std::chrono::nanoseconds>(endHuffman - startHuffman);
-        //std::cout << "Tempo de execução da árvore Huffman: " << durationHuffman.count() << " ns" << std::endl;
+        // std::cout << "Tempo de execução da árvore Huffman: " << durationHuffman.count() << " ns" << std::endl;
 
-
-        // std::cout << "\n";
         // std::cout<< word;
         // std::cout << wordCount[word] << std::endl;
         // std::cout << "Top K Palavras depois:\n";
@@ -256,9 +255,6 @@ void topKItems::VerificaArvoreECria(const std::string &listFilename, std::ofstre
         // }
         // std::cout << "-------------------\n";
         // std::cout << "\n";
-        
-        
-        
     }
 
     listFile.close();
@@ -271,7 +267,7 @@ void topKItems::CreatTree(std::vector<std::pair<std::string, int>> &vectorBasicT
     {
         arvore.insertTree(&root, entry);
     }
-    outputFile << std::left << std::setw(48) << std::setfill(' ') << "ARVORE BINÁRIA(PosOrdem): " << std::endl;
+    outputFile << std::left << std::setw(48) << std::setfill(' ') << "ÁRVORE BINÁRIA(PosOrdem): " << std::endl;
     outputFile << "[";
     arvore.printBinaryTreePosOrdem(root, outputFile);
     outputFile << "]";
@@ -289,7 +285,7 @@ void topKItems::CreatAVL(std::vector<std::pair<std::string, int>> &vectorAVLTree
     {
         arvoreAVL.insertAVL(&root, entry);
     }
-    outputFile << std::left << std::setw(48) << std::setfill(' ') << "ARVORE AVL(PosOrdem): " << std::endl;
+    outputFile << std::left << std::setw(48) << std::setfill(' ') << "ÁRVORE AVL(PosOrdem): " << std::endl;
     outputFile << "[";
     arvoreAVL.printBinaryTreePosOrdem(root, outputFile);
     outputFile << "]";
@@ -311,18 +307,17 @@ void topKItems::CreatHuffman(std::vector<std::pair<std::string, int>> &vectorHuf
         word[i] = vectorHuffmanTree[i].first;
         freq[i] = vectorHuffmanTree[i].second;
     }
-    outputFile << std::left << std::setw(48) << std::setfill(' ') << "ARVORE HUFFMAN(PosOrdem): " << std::endl;
+    outputFile << std::left << std::setw(48) << std::setfill(' ') << "ÁRVORE HUFFMAN(PosOrdem): " << std::endl;
     outputFile << "[";
-    arvoreHuffman.HuffmanCodes(word,freq,size,k, outputFile);
+    arvoreHuffman.HuffmanCodes(word, freq, size, k, outputFile);
     outputFile << "]";
     outputFile << std::endl;
     outputFile << "\n";
-
 }
 
 void topKItems::headerOutput(std::ofstream &outputFile, int numFiles, const std::string &word)
 {
-    outputFile<< "---------------------------------------------------------------------------------------------------------------------------------------"<<std::endl;
+    outputFile << "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << std::endl;
     outputFile << std::left << std::setw(10) << "TEXTOS"
                << std::left << std::setw(20) << "PALAVRAS DA LISTA"
                << std::left << std::setw(20) << "FREQUENCIA" << std::endl;
@@ -332,4 +327,3 @@ void topKItems::headerOutput(std::ofstream &outputFile, int numFiles, const std:
                << std::left << std::setw(20) << wordCount[word] << std::endl;
     outputFile << std::endl;
 }
-

@@ -25,11 +25,11 @@ int main()
         std::string filename = "data/input" + std::to_string(i) + ".txt";
 
         topKItems processor;
-        processor.init(filename); 
-        processor.topKWords(k);  
+        processor.init(filename);
+        processor.topKWords(k);
 
         std::string listFilename = "data/input.txt";
-        processor.VerificaArvoreECria(listFilename, outputFile, k, i); 
+        processor.VerificaArvoreECria(listFilename, outputFile, k, i);
         processor.wordCount.clear();
     }
 

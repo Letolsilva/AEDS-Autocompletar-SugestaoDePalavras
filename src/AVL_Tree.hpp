@@ -29,7 +29,6 @@ private:
 
 public:
     AVLTree();
-    ~AVLTree();
     void printBinaryTreePosOrdem(TreeAVL *t, std::ofstream &outputFile);
     void printAVLLevels(TreeAVL *t);
     void insertAVL(TreeAVL **t, const std::pair<std::string, int> &data);
